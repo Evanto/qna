@@ -13,7 +13,7 @@ class AnswersController < ApplicationController
     @answer = @question.answers.create(answer_params) #
 
     if @answer.save
-      redirect_to @question_answers_path(@question, @answer) #
+      redirect_to question_path(@question, @answer) #
     else
       render :new
     end
@@ -21,7 +21,7 @@ class AnswersController < ApplicationController
 
   def update
     if @question.answer.update(answer_params)
-      redirect_to question_answer_path(@question, @answer)
+      redirect_to question_path(@question, @answer)
     else
       render :edit
     end

@@ -1,10 +1,11 @@
 FactoryGirl.define do
   factory :answer do
     body "Test answer"
-    association :question, factory: :question
+    question
+    #association :question, factory: :question
   end
-  factory :invalid_, class: "Question" do
-    title nil
+  factory :invalid_answer, class: "Answer" do
     body nil
+    question
   end
 end
