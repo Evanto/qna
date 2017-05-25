@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   before_action :load_question
-  before_action :load_answer, only: [:edit, :update, :destroy]
+#  before_action :load_answer, only: [:edit, :update, :destroy]
 
   def new
     @answer = @question.answers.new
@@ -19,18 +19,18 @@ class AnswersController < ApplicationController
     end
   end
 
-  def update
-    if @question.answer.update(answer_params)
-      redirect_to question_path(@question, @answer)
-    else
-      render :edit
-    end
-  end
+#  def update
+#    if @question.answer.update(answer_params)
+#      redirect_to question_path(@question, @answer)
+#    else
+#      render :edit
+#    end
+#  end
 
-  def destroy
-    @answer.destroy
-    redirect_to question_path(@question)
-  end
+#  def destroy
+#    @answer.destroy
+#    redirect_to question_path(@question)
+#  end
 
   private
 
