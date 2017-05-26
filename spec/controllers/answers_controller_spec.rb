@@ -37,7 +37,7 @@ RSpec.describe AnswersController, type: :controller do
     context 'with invalid attributes' do
       it 'does not save new anwser to db' do
         expect { post :create, params: { question_id: question,
-                 answer: attributes_for(:invalid_answer) } }.to_not change(question.answers, :count)
+                 answer: attributes_for(:invalid_answer) } }.to_not change(Answer, :count)
       end
 
       it 're-renders new view' do
@@ -47,20 +47,5 @@ RSpec.describe AnswersController, type: :controller do
       end
     end
   end
-
-#  describe 'DELETE #destroy' do
-#    let!(:answer) { create(:answer) }
-
-#      it 'deletes answer' do
-#        expect { delete :destroy, params: { id: answer, question_id: answer.question_id } }.to change(Answer, :count).by(-1)
-#      end
-
-#      it 'redirects to question' do
-#        question = answer.question
-#        delete :destroy, params: { id: answer, question_id: answer.question.id }
-#        expect(response).to redirect_to question_path(question)
-
-#     end
-#   end
 
 end
