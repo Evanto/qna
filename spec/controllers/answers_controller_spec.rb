@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe AnswersController, type: :controller do
+  sign_in_user
   let(:question) { create(:question) }
-  let(:answer) { create(:answer, question: question) }
+  let(:answer) { create(:answer) }
 
   describe 'GET #new' do
 
@@ -23,11 +24,16 @@ RSpec.describe AnswersController, type: :controller do
 
   describe 'POST #create' do
     context 'with valid attributes' do
-      it 'saves new answer to the db' do
+
+      it 'saves new users answer to the db' do
         expect { post :create, params: { question_id: question, answer: attributes_for(:answer) } }.to change(question.answers, :count).by(1)
       end
 
-      it 'redirects to show view' do
+      it 'creates and saves new answer to db for a logged in user' do
+      expect { post :create, params: { question_id: question.id, answer: attributes_for(:answer)} }.to change(@user.answers, :count).by(1)
+      end
+
+      it 'redirects to show view of a question' do
         post :create, params: { question_id: question,
                                 answer: attributes_for(:answer) }
         expect(response).to redirect_to question_path(question, assigns(:answer))
