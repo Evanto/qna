@@ -1,3 +1,6 @@
 h1 All Questions
 
 p = link_to 'Ask question', new_question_path
+
+-@questions.each do |question|
+  h3= link_to question.title, question

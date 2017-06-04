@@ -17,6 +17,8 @@ feature 'User can view a list of all questions', %q{
   end
 
   scenario 'Non-authenticated User sees a list of questions' do
+    visit questions_path
+    
     questions.each do |question|
       expect(page).to have_content question.title
     end
