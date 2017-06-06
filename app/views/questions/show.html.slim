@@ -1,0 +1,12 @@
+h1 = @question.title
+p = @question.body
+
+h2 Answers
+br
+- if @question.answers.any?
+  = render 'answers/answers'
+- else
+  p = 'No comments yet. Be the first!'  
+
+- if user_signed_in?
+ = render 'answers/form'
