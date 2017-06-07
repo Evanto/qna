@@ -5,16 +5,21 @@ feature 'User answers a question', %q{
   I want to be able to fill the answer form on a page of a question
 } do
 
-given(:question) { create(:question) }
-given(:user) { create(:user) }
+  given(:user)     { create(:user) }
+  given(:question) { create(:question) }
+  given(:answer)   { create(:answer) }
 
-scenario 'Authenticated user answers a question' do
-  sign_in(user)
-  visit question_path(id: question.id)
-  fill_in 'Body', with: 'Test answer'
-  click_on 'Post your answer'
+  scenario 'Authenticated user answers a question' do
+    sign_in(user)
+    visit question_path(question)
 
-  expect(page).to have_content 'Test answer'
-end
+    expect(page).to have_content question.title
+    expect(page).to have_content question.body
 
+    fill_in  'Answer', with: answer[:body]
+    click_on 'Post your answer'
+
+    expect(page).to have_content 'Your answer was successfully created.'
+    expect(page).to have_content answer.body
+  end
 end

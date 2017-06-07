@@ -2,6 +2,9 @@ h1 = @question.title
 p = @question.body
 
 h2 Answers
+- if user_signed_in? && @question.user_id == current_user.id
+  = link_to "delete question", question_path(@question), method: :delete
+
 br
 - if @question.answers.any?
   = render 'answers/answers'
