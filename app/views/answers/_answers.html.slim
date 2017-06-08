@@ -1,12 +1,11 @@
-- @question.answers.each do |answer| # от каждого ответа к вопросу вывести тело ответа.
-
+- @question.answers.each do |answer|
   = answer.body
   
-  - if user_signed_in? && answer.user_id == current_user.id
+  - if current_user&.author_of? answer
      br
      = link_to "delete answer", answer_path(answer), method: :delete
      br
   - else
     br
     = nil
-    br
+br

@@ -1,10 +1,10 @@
 h1 = @question.title
 p = @question.body
 
-h2 Answers
-- if user_signed_in? && @question.user_id == current_user.id
+- if current_user&.author_of? @question
   = link_to "delete question", question_path(@question), method: :delete
 
+h2 Answers
 br
 - if @question.answers.any?
   = render 'answers/answers'
@@ -12,4 +12,4 @@ br
   p = 'No comments yet. Be the first!'  
 
 - if user_signed_in?
- = render 'answers/form'
+= render 'answers/form'
