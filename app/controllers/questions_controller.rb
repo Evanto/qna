@@ -15,11 +15,11 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+
   end
 
   def create
     @question = current_user.questions.new(question_params)
-
     if @question.save
       flash[:notice] = 'Your question was successfully created.'
       redirect_to @question
@@ -41,9 +41,8 @@ class QuestionsController < ApplicationController
       @question.destroy
       flash[:notice] = 'Your question was successfully deleted.'
       redirect_to questions_path
+    end
   end
-
-  private
 
   def load_question
     @question = Question.find(params[:id])
@@ -52,4 +51,5 @@ class QuestionsController < ApplicationController
   def question_params
     params.require(:question).permit(:title, :body)
   end
+
 end
