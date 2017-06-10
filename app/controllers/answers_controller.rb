@@ -3,6 +3,18 @@ class AnswersController < ApplicationController
   before_action :load_question, only: [:create]
   before_action :load_answer, only: [:edit, :update, :destroy]
 
+  def edit
+
+  end
+
+  def update
+    if @answer.update(answer_params)
+      redirect_to @answer
+    else
+      render :edit
+    end
+  end
+
   def create
     @answer = @question.answers.new(answer_params)
     @answer.user = current_user
@@ -11,13 +23,12 @@ class AnswersController < ApplicationController
       redirect_to @answer.question
     else
       flash[:alert] = 'Something went wrong, please try again.'
-      render 'questions/show'
-
+     render 'questions/show'
     end
   end
 
   def destroy
-    if current_userauthor_of? @answer
+    if current_user.author_of? @answer
       @answer.destroy
       redirect_to @question, notice: 'Answer successfully deleted'
     else

@@ -1,8 +1,9 @@
- 
- = form_for [@question, Answer.new] do |f|
-   br
+= form_for [@question, Answer.new] do |f|
+   p
    = f.label :body, 'Answer'
-   br
+   p
    = f.text_area :body
-   br
+   p
+   = render 'shared/errors', object: @answer if @answer
+   p
    = f.submit 'Post your answer'

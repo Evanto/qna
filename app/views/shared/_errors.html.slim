@@ -1,0 +1,7 @@
+- if object && object.errors.any?
+
+    strong= pluralize(object.errors.count, "error")
+    | :&nbsp;
+    ul
+      - object.errors.full_messages.each do |message|
+        li= message

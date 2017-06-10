@@ -1,11 +1,12 @@
 - @question.answers.each do |answer|
-  = answer.body
+  - if answer.persisted?
+    = answer.body
   
-  - if current_user&.author_of? answer
-     br
-     = link_to "delete answer", answer_path(answer), method: :delete
-     br
-  - else
-    br
-    = nil
+    - if current_user&.author_of? answer
+       br
+       = link_to "delete answer", answer_path(answer), method: :delete
+       br
+    - else
+       br
+       = nil
 br
