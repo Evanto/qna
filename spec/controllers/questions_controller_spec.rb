@@ -124,8 +124,11 @@ RSpec.describe QuestionsController, type: :controller do
 
   describe 'DELETE #destroy' do
     sign_in_user
-
     before { question }
+
+    context '1) authenticated user deletes his question' do
+      let(:question) { create(:question, user: @user) }
+
       it 'deletes question' do
         expect { delete :destroy, params: { id: question } }.to change(Question, :count).by(-1)
       end
@@ -133,7 +136,16 @@ RSpec.describe QuestionsController, type: :controller do
       it 'redirects to index view' do
         delete :destroy, params: { id: question }
         expect(response).to redirect_to questions_path
+      end
+    end
 
-     end
-   end
+    context '2) authenticated user tries to delete some other users question' do
+      let(:question) { create(:question) }
+
+      it 'tries to delete question' do
+        expect { delete :destroy, params: { id: question } }.to_not change(Question, :count)
+      end
+
+    end
+  end
 end

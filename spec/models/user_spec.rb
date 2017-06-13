@@ -17,16 +17,16 @@ RSpec.describe User, type: :model do
       expect(user.author_of?(question)).to eq true
     end
 
-    it 'should return false if user does not own the question'
-      expect(user.author_of?(question)).to eq false
+    it 'should return false if user does not own the question' do
+      expect(user2.author_of?(question)).to eq false
     end
 
     it 'should return true if user owns the answer' do
       expect(user.author_of?(answer)).to eq true
     end
 
-    it 'should return false if user does not own the answer'
-      expect(user.author_of?(answer)).to eq false
+    it 'should return false if user does not own the answer' do
+      expect(user2.author_of?(answer)).to eq false
     end
 
   end

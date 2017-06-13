@@ -2,8 +2,9 @@ h2 New Question
 = form_for @question do |f|
   = f.label :title
   = f.text_field :title
-  br
+  p
   = f.label :body
   = f.text_area :body
-  br
+  p
+  = render 'shared/errors', object: @question
   = f.submit 'Create'

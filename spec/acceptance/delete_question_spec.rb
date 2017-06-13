@@ -14,6 +14,8 @@ feature 'Delete Question', %q{
     sign_in(user)
 
     visit question_path(question)
+    expect(page).to have_content question.title
+    expect(page).to have_content question.body
     click_on 'delete question'
 
     expect(page).to have_content 'Your question was successfully deleted.'

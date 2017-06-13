@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_question, only: [:create]
+  before_action :load_question, only: [:create, :destroy]
   before_action :load_answer, only: [:edit, :update, :destroy]
 
   def edit
@@ -32,7 +32,6 @@ class AnswersController < ApplicationController
       @answer.destroy
       redirect_to @question, notice: 'Answer successfully deleted'
     else
-      flash[:notice] = 'Your answer was successfully deleted.'
       redirect_to @question
     end
   end
