@@ -4,7 +4,6 @@ class AnswersController < ApplicationController
   before_action :load_answer, only: [:edit, :update, :destroy]
 
   def edit
-
   end
 
   def update
@@ -28,12 +27,13 @@ class AnswersController < ApplicationController
   end
 
   def destroy
+    @question = @answer.question
     if current_user.author_of? @answer
       @answer.destroy
-      redirect_to @question, notice: 'Answer successfully deleted'
+      render 'questions/show'
+      #redirect_to question_path(question), notice: 'Answer successfully deleted'
     else
       flash[:notice] = 'Your answer was successfully deleted.'
-      redirect_to @question
     end
   end
 
