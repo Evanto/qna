@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def new
@@ -43,6 +43,8 @@ class QuestionsController < ApplicationController
       redirect_to questions_path
     end
   end
+
+  private
 
   def load_question
     @question = Question.find(params[:id])

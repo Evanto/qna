@@ -8,7 +8,7 @@ RSpec.describe AnswersController, type: :controller do
   describe 'DELETE #destroy' do
   before { answer }
 
-  #context "deletes user's answer" do
+  context "1) user deletes his answer" do
     it 'deletes answer' do
       expect { delete :destroy, params: { question_id: question, id: answer } }
         .to change(Answer, :count).by(-1)
@@ -16,10 +16,18 @@ RSpec.describe AnswersController, type: :controller do
 
     it 'redirects to question' do
       delete :destroy, params: { question_id: question, id: answer }
-      expect(response).to render 'questions/show'
+      expect(response).to be_successful
     end
   end
-#end
+end
+  context '2) tries to delete answer which he is not the author of' do
+  let(:answer) { create(:answer, question: question) }
+
+  it 'does not delete the answer' do
+    expect { delete :destroy, params: { question_id: question, id: answer } }
+    .to_not change(Answer, :count)
+  end
+end
 
   describe 'POST #create' do
     context '1) with valid attributes' do
