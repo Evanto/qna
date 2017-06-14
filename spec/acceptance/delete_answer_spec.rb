@@ -9,19 +9,27 @@ I want to be able to delete answers, of which I am the author
   given!(:question) { create(:question, user: user) }
   given!(:answer) { create(:answer, user: user, question: question)}
 
-  scenario 'User deletes his answer' do
-    sign_in(user)
+  scenario 'Authenticated user deletes his answer' do
+    sign_in(answer.user)
     visit question_path(question)
-    answer_body = answer.body
+
+    expect(page).to have_content answer.body
 
     click_on 'delete answer'
-    expect(page).to have_content 'Answer successfully deleted'
-    expect(page).not_to have_content 'answer_body'
+    expect(page).to have_content 'Your answer was successfully deleted.'
+    expect(page).not_to have_content answer.body
   end
 
-  scenario 'User cant delete other user answer'do
+  scenario "User can't delete other user's answer"do
     other_user = create(:user)
     sign_in(other_user)
+    visit question_path(question)
+
+    expect(page).not_to have_content 'delete answer'
+  end
+
+  scenario 'Non-authenticated user tries to delete an answer'do
+    other_user = create(:user)
     visit question_path(question)
 
     expect(page).not_to have_content 'delete answer'
