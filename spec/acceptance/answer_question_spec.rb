@@ -28,11 +28,10 @@ feature 'User answers a question', %q{
     expect(page).to have_content question.title
     expect(page).to have_content question.body
 
-    click_on 'Post your answer'
-
-    expect(page).to have_content 'You need to sign in or sign up before continuing.'
+    expect(page).not_to have_content 'Post your answer'
   end
-    scenario 'Authenticated User tries to post an empty answer' do
+
+  scenario 'Authenticated user tries to post an empty answer' do
     sign_in(user)
     visit question_path(question)
 
@@ -44,4 +43,4 @@ feature 'User answers a question', %q{
     expect(page).to have_content "Body can't be blank"
 
  end
-end 
+end
