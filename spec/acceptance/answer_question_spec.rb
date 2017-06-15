@@ -12,9 +12,6 @@ feature 'User answers a question', %q{
     sign_in(user)
     visit question_path(question)
 
-    expect(page).to have_content question.title
-    expect(page).to have_content question.body
-
     fill_in  'Answer', with: 'My answer'
     click_on 'Post your answer'
 
@@ -25,18 +22,12 @@ feature 'User answers a question', %q{
   scenario 'Non-authenticated user answers a question' do
     visit question_path(question)
 
-    expect(page).to have_content question.title
-    expect(page).to have_content question.body
-
     expect(page).not_to have_content 'Post your answer'
   end
 
   scenario 'Authenticated user tries to post an empty answer' do
     sign_in(user)
     visit question_path(question)
-
-    expect(page).to have_content question.title
-    expect(page).to have_content question.body
 
     click_on 'Post your answer'
 
