@@ -2,14 +2,15 @@ require 'rails_helper'
 
 RSpec.describe AnswersController, type: :controller do
   sign_in_user
-  let(:question) { create(:question) }
-  let(:answer) { create(:answer) }
+  let!(:question) { create(:question) }
+  let!(:answer) { create(:answer, user: @user) }
 
   describe 'DELETE #destroy' do
     before { answer }
 
     context "1) user deletes his answer" do
-      it 'deletes answer' do
+      it 'deletes users answer' do
+
         expect { delete :destroy, params: { question_id: question, id: answer } }
         .to change(Answer, :count).by(-1)
       end
@@ -17,16 +18,22 @@ RSpec.describe AnswersController, type: :controller do
       it 'redirects to question' do
         delete :destroy, params: { question_id: question, id: answer }
 
-        expect(response).to be_successful
+        expect(response).to redirect_to question_path(answer.question)
       end
     end
 
-  context '2) tries to delete answer which he is not the author of' do
-    let(:answer) { create(:answer, question: question) }
+  context '2) user tries to delete an answer which he is not the author of' do
+    let!(:answer) { create(:answer, question: question) }
 
     it 'does not delete the answer' do
       expect { delete :destroy, params: { question_id: question, id: answer } }
       .to_not change(Answer, :count)
+    end
+
+    it 'redirects to question' do
+      delete :destroy, params: { question_id: question, id: answer }
+
+      expect { delete :destroy, params: { question_id: question, id: answer } }
     end
   end
 end
@@ -39,7 +46,7 @@ end
       end
 
       it 'creates and saves new answer to db for a logged in user' do
-      expect { post :create, params: { question_id: question.id, answer: attributes_for(:answer) } }.to change(@user.answers, :count).by(1)
+        expect { post :create, params: { question_id: question.id, answer: attributes_for(:answer) } }.to change(@user.answers, :count).by(1)
       end
 
       it 'redirects to show view of a question' do
