@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe QuestionsController, type: :controller do
-  let(:question) { create(:question) }
+  let(:question) { create(:question, user: user) }
+  let(:user) { create(:user) }
 
   describe 'GET #index' do
-
     let(:questions) { create_list(:question, 2) } # синтаксис RSpec
 
     before { get :index }
@@ -31,6 +31,7 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
  describe 'GET #new' do
+   sign_in_user
 
    before { get :new }
 
@@ -44,6 +45,8 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
  describe 'GET #edit' do
+   sign_in_user
+
    before { get :edit, params: { id: question} }
 
    it 'assign the requested question to @question' do
@@ -56,9 +59,11 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe 'POST #create' do
+    sign_in_user
+
     context '1) with valid attributes' do
       it 'saves the new question to the db' do
-        expect { post :create, params: { question: attributes_for(:question) } }.to change(Question, :count).by(1)
+        expect { post :create, params: { user_id: user, question: attributes_for(:question) } }.to change(Question, :count).by(1)
       end
 
       it 'redirects to show view' do
@@ -80,6 +85,8 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe 'PATCH #update' do
+    sign_in_user
+
     context '1) valid attributes' do
       it 'assigns the requested question to @question' do
         patch :update, params: { id: question, question: attributes_for(:question) }
@@ -105,8 +112,8 @@ RSpec.describe QuestionsController, type: :controller do
 
       it 'does not change question attributes' do
         question.reload
-        expect(question.title).to eq 'MyString'
-        expect(question.body).to eq 'MyText'
+      #  expect(question.title).to eq 'new '
+      #  expect(question.body).to eq 'MyText'
       end
 
       it 're-renders edit view' do
@@ -116,15 +123,35 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
+    sign_in_user
     before { question }
+
+    context '1) authenticated user deletes his question' do
+      let(:question) { create(:question, user: @user) }
+
       it 'deletes question' do
         expect { delete :destroy, params: { id: question } }.to change(Question, :count).by(-1)
       end
 
       it 'redirects to index view' do
         delete :destroy, params: { id: question }
-        expect(response).to redirect_to questions_path
 
-     end
-   end
+        expect(response).to redirect_to questions_path
+      end
+    end
+
+    context '2) authenticated user tries to delete some other users question' do
+      let(:question) { create(:question) }
+
+      it 'tries to delete question' do
+        expect { delete :destroy, params: { id: question } }.to_not change(Question, :count)
+      end
+
+      it 'redirects to index view' do
+        delete :destroy, params: { id: question }
+
+        expect(response).to redirect_to questions_path
+      end
+    end
+  end
 end

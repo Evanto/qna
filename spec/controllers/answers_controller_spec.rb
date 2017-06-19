@@ -1,40 +1,62 @@
 require 'rails_helper'
 
 RSpec.describe AnswersController, type: :controller do
-  let(:question) { create(:question) }
-  let(:answer) { create(:answer, question: question) }
+  sign_in_user
+  let!(:question) { create(:question) }
+  let!(:answer) { create(:answer, user: @user) }
 
-  describe 'GET #new' do
+  describe 'DELETE #destroy' do
+    before { answer }
 
-    before { get :new, params: { question_id: question} }
+    context "1) user deletes his answer" do
+      it 'deletes users answer' do
 
-    it 'assigns a new Answer to @answer' do
-       expect(assigns(:answer)).to be_a_new(Answer)
+        expect { delete :destroy, params: { question_id: question, id: answer } }
+        .to change(Answer, :count).by(-1)
+      end
+
+      it 'redirects to question' do
+        delete :destroy, params: { question_id: question, id: answer }
+
+        expect(response).to redirect_to question_path(answer.question)
+      end
     end
 
-    it 'checks that new answer corresponds to a question' do # новая проверка для ответов, в вопросах нам она была не нужна
-      expect(assigns(:question).answers.first).to be_a_new(Answer)
+  context '2) user tries to delete an answer which he is not the author of' do
+    let!(:answer) { create(:answer, question: question) }
+
+    it 'does not delete the answer' do
+      expect { delete :destroy, params: { question_id: question, id: answer } }
+      .to_not change(Answer, :count)
     end
 
-    it 'renders new view' do
-      expect(response).to render_template :new
+    it 'redirects to question' do
+      delete :destroy, params: { question_id: question, id: answer }
+
+      expect { delete :destroy, params: { question_id: question, id: answer } }
     end
   end
+end
 
   describe 'POST #create' do
-    context 'with valid attributes' do
-      it 'saves new answer to the db' do
+    context '1) with valid attributes' do
+
+      it 'saves new users answer to the db' do
         expect { post :create, params: { question_id: question, answer: attributes_for(:answer) } }.to change(question.answers, :count).by(1)
       end
 
-      it 'redirects to show view' do
+      it 'creates and saves new answer to db for a logged in user' do
+        expect { post :create, params: { question_id: question.id, answer: attributes_for(:answer) } }.to change(@user.answers, :count).by(1)
+      end
+
+      it 'redirects to show view of a question' do
         post :create, params: { question_id: question,
                                 answer: attributes_for(:answer) }
-        expect(response).to redirect_to question_path(question, assigns(:answer))
+        expect(response).to redirect_to question_path(question)
       end
     end
 
-    context 'with invalid attributes' do
+    context '2) with invalid attributes' do
       it 'does not save new anwser to db' do
         expect { post :create, params: { question_id: question,
                  answer: attributes_for(:invalid_answer) } }.to_not change(Answer, :count)
@@ -42,8 +64,8 @@ RSpec.describe AnswersController, type: :controller do
 
       it 're-renders new view' do
         post :create, params: { question_id: question,
-                                answer: attributes_for(:invalid_answer)}
-        expect(response).to render_template :new
+                                answer: attributes_for(:invalid_answer) }
+        expect(response).to render_template 'questions/show'
       end
     end
   end
