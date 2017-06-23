@@ -15,9 +15,12 @@ feature 'User answers a question', %q{
     fill_in  'Answer', with: 'My answer'
     click_on 'Post your answer'
 
-    expect(page).to have_content 'Your answer was successfully created.'
+    #expect(page).to have_content 'Your answer was successfully created.'
+    save_and_open_page
+    within '.answers' do
     expect(page).to have_content 'My answer'
   end
+end
 
   scenario 'Non-authenticated user answers a question' do
     visit question_path(question)
@@ -25,13 +28,14 @@ feature 'User answers a question', %q{
     expect(page).not_to have_content 'Post your answer'
   end
 
-  scenario 'Authenticated user tries to post an empty answer' do
+  scenario 'Authenticated user tries to post an empty answer', js: true do
     sign_in(user)
     visit question_path(question)
 
     click_on 'Post your answer'
-
-    expect(page).to have_content "Body can't be blank"
-
+    within '.errors' do
+      expect(page).to have_content "Body can't be blank"
+  end
  end
+ 
 end

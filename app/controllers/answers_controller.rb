@@ -17,13 +17,13 @@ class AnswersController < ApplicationController
   def create
     @answer = @question.answers.new(answer_params)
     @answer.user = current_user
-    if @answer.save
-      flash[:notice] = 'Your answer was successfully created.'
-      redirect_to @answer.question
-    else
-      flash[:alert] = 'Something went wrong, please try again.'
-     render 'questions/show'
-    end
+    @answer.save
+      #flash[:notice] = 'Your answer was successfully created.'
+      #redirect_to @answer.question
+    #else
+      #flash[:alert] = 'Something went wrong, please try again.'
+     #render 'questions/show'
+    #end
   end
 
   def destroy

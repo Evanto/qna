@@ -1,1 +1,3 @@
-$('.answers').html('<%= render 'answers/answers' %>');
+$('.answers').html('<%= j render 'answers/answers' %>');
+$('#answer_body').val('');
+$('.errors').html("<%= j render 'shared/errors', object: @answer %>");
