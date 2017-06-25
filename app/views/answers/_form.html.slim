@@ -1,9 +1,11 @@
 = form_for([@question, Answer.new], remote: true) do |f|
+   p 
+   .errors
+     = render 'shared/errors', object: @answer if @answer
    p
    = f.label :body, 'Answer'
    p
    = f.text_area :body
-   p
-   = render 'shared/errors', object: @answer if @answer
+
    p
    = f.submit 'Post your answer'

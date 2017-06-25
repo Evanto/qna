@@ -1,0 +1,6 @@
+  - if answer.persisted?
+    = answer.body
+    - if current_user&.author_of? answer
+       br
+       = link_to "delete answer", answer_path(answer), method: :delete
+       br
