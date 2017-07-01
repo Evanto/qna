@@ -21,15 +21,15 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'
-  gem 'selenium-webdriver'
+  gem 'rails-controller-testing'
+  gem 'capybara'
+  gem 'launchy'
   gem 'database_cleaner'
+  gem 'capybara-webkit'
 end
 
 group :test do
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
-  gem 'rails-controller-testing'
-  gem 'capybara'
-  gem 'launchy'
 end
 
 group :development do

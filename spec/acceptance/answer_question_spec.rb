@@ -8,7 +8,7 @@ feature 'User answers a question', %q{
   given(:user)     { create(:user) }
   given(:question) { create(:question) }
 
-  scenario 'Authenticated user answers a question', js: true do
+  scenario 'Authenticated posts a valid answer', js: true do
     sign_in(user)
     visit question_path(question)
 
