@@ -5,11 +5,10 @@ p = @question.body
   = link_to "delete question", question_path(@question), method: :delete
 
 h2 Answers
-br
-- if @question.answers.any?
-  = render 'answers/answers'
-- else
-  p = 'No comments yet. Be the first!'  
-
+.answers
+  ul
+    = render @question.answers
+ 
 - if user_signed_in?
+  .errors
   = render 'answers/form'
