@@ -1,4 +1,4 @@
-require 'rails_helper'
+require_relative 'acceptance_helper'
 
 feature 'User views question with answers', %q{
   In order to read questions and answers

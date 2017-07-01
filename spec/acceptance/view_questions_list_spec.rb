@@ -1,4 +1,4 @@
-require 'rails_helper'
+require_relative 'acceptance_helper'
 
 feature 'User can view a list of all questions', %q{
   In order to look around as a visitor
@@ -18,7 +18,7 @@ feature 'User can view a list of all questions', %q{
 
   scenario 'Non-authenticated User sees a list of questions' do
     visit questions_path
-    
+
     questions.each do |question|
       expect(page).to have_content question.title
     end

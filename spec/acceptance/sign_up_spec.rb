@@ -1,4 +1,4 @@
-require 'rails_helper'
+require_relative 'acceptance_helper'
 
 feature 'New User can sign up on the website', %q{
   In order to ask questions,
