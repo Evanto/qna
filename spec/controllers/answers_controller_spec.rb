@@ -70,4 +70,42 @@ end
     end
   end
 
+  describe 'PATCH #update' do
+    let(:answer) { create(:answer, question: question, user: @user) }
+
+    it 'assigns answer from db to @answer' do
+      patch :update, params: { id: answer, answer: attributes_for(:answer), format: :js }
+      expect(assigns(:answer)).to eq answer
+    end
+
+    it 'assigns question from db to @question' do
+      patch :update, params: { id: answer, answer: attributes_for(:answer), format: :js }
+      expect(assigns(:question)).to eq question
+    end
+
+    context '1) answer author' do
+      it 'changes answer attributes' do
+        sign_in(answer.user)
+        patch :update, params: { id: answer, answer: { body: 'new answer body'}, format: :js }
+        answer.reload
+        expect(answer.body).to eq 'new answer body'
+      end
+    end
+
+    context '2) not an answer author' do
+      let!(:user2) { create(:user) }
+
+      it "doesn't change answer attributes" do
+        sign_in(user2)
+        patch :update, params: { id: answer, answer: { body: 'hahaha'}, format: :js }
+        answer.reload
+        expect(answer.body).to_not eq 'hahaha'
+      end
+    end
+
+    it 'renders an update template' do
+      patch :update, params: { id: answer, answer: attributes_for(:answer), format: :js }
+      expect(response).to render_template :update
+    end
+  end
 end

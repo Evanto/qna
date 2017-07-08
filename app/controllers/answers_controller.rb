@@ -7,10 +7,10 @@ class AnswersController < ApplicationController
   end
 
   def update
-    if @answer.update(answer_params)
-      redirect_to @answer
-    else
-      render :edit
+    if current_user&.author_of? @answer
+    #if current_user.id == @answer.user_id
+    @answer.update(answer_params)
+    @question = @answer.question
     end
   end
 

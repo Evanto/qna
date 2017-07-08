@@ -6,9 +6,8 @@ p = @question.body
 
 h2 Answers
 .answers
-  ul
-    = render @question.answers
+   = render 'answers/answers'
  
 - if user_signed_in?
   .errors
-  = render 'answers/form'
+= render 'answers/form'
