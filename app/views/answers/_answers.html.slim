@@ -1,7 +1,7 @@
 - @question.answers.each do |answer|
-  li id="answer-#{answer.id}"
+  div class="answer-#{answer.id}"
     - if answer.persisted?
-      = answer.body
+      p= answer.body
       - if current_user&.author_of? answer
         p= link_to 'Edit', '', class: 'edit-answer-link', data: { answer_id: answer.id }
         p= link_to "delete answer", answer_path(answer), method: :delete
