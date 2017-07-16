@@ -12,6 +12,7 @@ ready = ->
     answer_id = $(this).data('answerId'); # answerId берется из дива
     $('form#edit-form').hide();
     $('form#edit-answer-' + answer_id).show();
+    $('.warning').remove(); # удаляем ворнинг при нажатии на edit
 
 $(document).ready(ready);                   # вешаем функцию ready на событие document.ready
 $(document).on('turbolinks:load', ready);   # вешаем функцию ready на событие page:load

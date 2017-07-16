@@ -11,27 +11,29 @@ RSpec.describe AnswersController, type: :controller do
     context "1) user deletes his answer" do
       it 'deletes users answer' do
 
-        expect { delete :destroy, params: { question_id: question, id: answer } }
+        expect { delete :destroy, params: { question_id: question, id: answer, format: :js } }
         .to change(Answer, :count).by(-1)
       end
 
-      it 'redirects to question' do
-        delete :destroy, params: { question_id: question, id: answer }
+      it 'removes answer from page' do
+        sign_in(answer.user)
+        question = answer.question
 
-        expect(response).to redirect_to question_path(answer.question)
+        delete :destroy, params: { question_id: question, id: answer, format: :js }
+        expect(response).to_not have_content answer.body
       end
     end
 
   context '2) user tries to delete an answer which he is not the author of' do
     let!(:answer) { create(:answer, question: question) }
 
-    it 'does not delete the answer' do
-      expect { delete :destroy, params: { question_id: question, id: answer } }
+    it 'does not delete the answer belonging to someone else' do
+      expect { delete :destroy, params: { question_id: question, id: answer, format: :js } }
       .to_not change(Answer, :count)
     end
 
     it 'redirects to question' do
-      delete :destroy, params: { question_id: question, id: answer }
+      delete :destroy, params: { question_id: question, id: answer, format: :js }
 
       expect { delete :destroy, params: { question_id: question, id: answer } }
     end

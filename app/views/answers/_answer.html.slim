@@ -3,7 +3,7 @@
     = answer.body
     - if current_user&.author_of? answer
       p= link_to 'Edit', '', class: 'edit-answer-link', data: { answer_id: answer.id }
-      p= link_to "delete answer", answer_path(answer), method: :delete
+      p= link_to "delete answer", answer_path(answer), remote: true, method: :delete
       p
       = form_for [answer], remote: true, html: { id: "edit-answer-#{answer.id}"} do |f|
         = f.label :body, "Answer"

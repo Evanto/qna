@@ -8,7 +8,6 @@ class AnswersController < ApplicationController
 
   def update
     if current_user&.author_of? @answer
-    #if current_user.id == @answer.user_id
     @answer.update(answer_params)
     @question = @answer.question
     end
@@ -24,10 +23,6 @@ class AnswersController < ApplicationController
     @question = @answer.question
     if current_user.author_of? @answer
       @answer.destroy!
-      flash[:notice] = 'Your answer was successfully deleted.'
-      redirect_to question_path(@question)
-    else
-      redirect_to question_path(@question)
     end
   end
 
