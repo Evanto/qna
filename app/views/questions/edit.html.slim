@@ -1,0 +1,9 @@
+h1 Edit question
+= render 'shared/errors', object: @question if @question
+
+= form_for @question do |f|
+  p= f.label :title
+  p= f.text_field :title
+  p= f.label :body
+  p= f.text_area :body
+  p= f.submit 'Save'
