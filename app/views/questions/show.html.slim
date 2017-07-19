@@ -1,8 +1,15 @@
-h1 = @question.title
-p = @question.body
-- if current_user&.author_of? @question
-  p= link_to 'Edit', edit_question_path(@question)
-  p= link_to "Delete", question_path(@question), method: :delete
+.questions
+  h1 = @question.title
+  p = @question.body
+  - if current_user&.author_of? @question
+    p= link_to 'Edit', '', class: 'edit-question-link', remote: true
+    p= link_to "Delete", question_path(@question), method: :delete
+    = form_for @question, remote: true, html: { class:"update-question-form", id: "edit-question-#{@question.id}"} do |f|
+      p= f.label :title, 'Title'
+      p= f.text_area :title
+      p= f.label :body, 'Body'
+      p= f.text_area :body
+      p= f.submit 'Save'
 
 h2 Answers
 .answers
