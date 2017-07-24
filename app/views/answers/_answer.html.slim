@@ -1,11 +1,19 @@
-- if answer.persisted?
+- if answer.best && answer.persisted?
   div class="answer-#{answer.id}"
-    = answer.body
-    - if current_user&.author_of? answer
-      p= link_to 'Edit', '', class: 'edit-answer-link', data: { answer_id: answer.id }
-      p= link_to "delete answer", answer_path(answer), remote: true, method: :delete
-      p= link_to "set best", set_best_answer_path(answer), class: "set-best-link", remote: true, method: :patch
-      = form_for [answer], remote: true, html: { id: "edit-answer-#{answer.id}"} do |f|
-        = f.label :body, "Answer"
-        = f.text_area :body
-        = f.submit 'Save'
+  p.glyphicon.glyphicon-star class="answer-#{answer.id}" = answer.body
+- elsif answer.persisted?
+  div class="answer-#{answer.id}"
+  p class="answer-#{answer.id}" = answer.body
+            
+  - if current_user&.author_of? answer
+    p= link_to 'Edit', '', class: 'edit-answer-link', data: { answer_id: answer.id }
+    p= link_to "delete answer", answer_path(answer), remote: true, method: :delete
+    = form_for [answer], remote: true, html: { id: "edit-answer-#{answer.id}" } do |f|
+      = f.label :body, "Answer"
+      = f.text_area :body
+      = f.submit 'Save'
+  -if current_user&.author_of? answer.question
+    p= link_to "set best", set_best_answer_path(answer), class: "set-best-link", remote: true, method: :patch, data: { answer_id: answer.id }
+  -elsif answer.best
+    p= link_to "set best", set_best_answer_path(answer), class: " best_link set-best-link", remote: true, method: :patch, data: { answer_id: answer.id }
+    
