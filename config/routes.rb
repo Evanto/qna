@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+
   devise_for :users
-  # вложенные ресурсы: ответ вложен в вопрос
-  resources :questions, shallow: true do
-    resources :answers
+
+  resources :questions do
+    resources :answers, shallow: true do
+      patch :set_best, on: :member
+      get :set_best,on: :member
+    end
   end
 
   root to: "questions#index"
