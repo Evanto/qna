@@ -20,8 +20,8 @@ ready = ->
     answer_id = $(this).data('answerId'); # answerId берется из дива
     $('p').removeClass('glyphicon glyphicon-star');
     $('p.answer-' + answer_id).addClass('glyphicon glyphicon-star');
-
-
+    $('div.answer-' + answer_id).prependTo('div.answers');
+    return;
 
 $(document).ready(ready);                   # вешаем функцию ready на событие document.ready
 $(document).on('turbolinks:load', ready);   # вешаем функцию ready на событие page:load
