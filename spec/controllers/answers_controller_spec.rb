@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe AnswersController, type: :controller do
   sign_in_user
   let!(:question) { create(:question) }
-  let!(:answer) { create(:answer, user: @user) }
+  let!(:answer)   { create(:answer, user: @user) }
 
   describe 'DELETE #destroy' do
     before { answer }
@@ -108,6 +108,39 @@ end
     it 'renders an update template' do
       patch :update, params: { id: answer, answer: attributes_for(:answer), format: :js }
       expect(response).to render_template :update
+    end
+  end
+
+  describe 'PATCH #set_best' do
+
+    context '1) Questions author sets the best answer' do
+
+      it 'assigns the requested answer from db to @answer' do
+        patch :set_best, params: { id: answer, quetion_id: question, answer: attributes_for(:answer), format: :js }
+        expect(assigns(:answer)).to eq answer
+      end
+
+      it 'sets best answer' do
+        sign_in(answer.question.user)
+
+        patch :set_best, params: { id: answer, format: :js }
+        answer.reload
+        expect(answer.best).to eq true
+      end
+
+      it 'changes best answer' do
+        other_answer = create(:answer, question: answer.question, best: true)
+        sign_in(answer.question.user)
+        patch :set_best, params: { id: answer, format: :js }
+        other_answer.reload
+        expect(other_answer.best).to eq false
+      end
+    end
+
+    it "fails to set the best answer to other user's question" do
+      patch :set_best, params: { id: answer, format: :js }
+      answer.reload
+      expect(answer.best).to eq false
     end
   end
 end

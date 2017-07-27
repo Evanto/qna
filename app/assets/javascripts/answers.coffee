@@ -9,15 +9,15 @@ ready = ->
   $('.answers').on 'click', '.edit-answer-link', (e) ->
     e.preventDefault();
     $(this).hide();
-    answer_id = $(this).data('answerId'); # answerId берется из дива
+    answer_id = $(this).data('answerId');
     $('form#edit-form').hide();
     $('form#edit-answer-' + answer_id).show();
-    $('.warning').remove(); # удаляем ворнинг при нажатии на edit
+    $('.warning').remove();
   $('.answers').on 'click', '.set-best-link', (e) ->
     e.preventDefault();
     $('.set-best-link').show();
     $(this).hide();
-    answer_id = $(this).data('answerId'); # answerId берется из дива
+    answer_id = $(this).data('answerId');
     $('p').removeClass('glyphicon glyphicon-star');
     $('p.answer-' + answer_id).addClass('glyphicon glyphicon-star');
     $('div.answer-' + answer_id).prependTo('div.answers');

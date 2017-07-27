@@ -51,7 +51,7 @@ feature 'Set best answer', %q{
         click_on 'set best'
       end
 
-      #expect(page.first).to have_css '.glyphicon-star' # ждем, что у первого эл-та будет глиф
+      #expect(question.answers.first.id).to have_css '.glyphicon-star'
       expect(page.first(:css, 'div')).to have_css '.glyphicon-star'
     end
   end
