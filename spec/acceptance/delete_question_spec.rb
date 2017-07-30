@@ -1,4 +1,4 @@
-require 'rails_helper'
+require_relative 'acceptance_helper'
 
 feature 'Delete Question', %q{
   In order to delete question from website
@@ -16,7 +16,7 @@ feature 'Delete Question', %q{
     visit question_path(question)
     expect(page).to have_content question.title
     expect(page).to have_content question.body
-    click_on 'delete question'
+    click_on 'Delete'
 
     expect(page).to have_content 'Your question was successfully deleted.'
     expect(page).not_to have_content question.title

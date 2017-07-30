@@ -1,4 +1,4 @@
-require 'rails_helper'
+require_relative 'acceptance_helper'
 
 feature 'User deletes answer', %q{
 In order to remove my answer
@@ -9,7 +9,7 @@ I want to be able to delete answers, of which I am the author
   given!(:question) { create(:question, user: user) }
   given!(:answer) { create(:answer, user: user, question: question)}
 
-  scenario 'Authenticated user deletes his answer' do
+  scenario 'Authenticated user deletes his answer', js: true do
     sign_in(answer.user)
     visit question_path(question)
 

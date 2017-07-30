@@ -1,4 +1,4 @@
-require 'rails_helper'
+require_relative 'acceptance_helper'
 
 feature 'Create question', %q{
   In order to get answers from a community
@@ -38,4 +38,4 @@ feature 'Create question', %q{
     expect(page).to have_content "Title can't be blank"
     expect(page).to have_content "Body can't be blank"
   end
-end  
+end

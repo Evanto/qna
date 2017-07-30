@@ -1,0 +1,13 @@
+//div class="question-#{question.id}"
+  //    p= link_to question.title, question
+    //  = question.title
+      //= question.body
+      //- if current_user&.author_of? @question
+        //p=link_to 'delete', question, data: {confirm: 'Are you sure?'}, method: :delete
+        //p=link_to 'edit', '', class: 'edit-question-link', data: { question_id: question.id }
+          //= form_for [question], remote: true, html: { id: "edit-question-#{question.id}"} do |f|
+            //p= f.label :title, 'Title'
+            //p= f.text_area :title
+            //p= f.label :body, 'Body'
+            //p= f.text_area :body
+            //p= f.submit 'Save'

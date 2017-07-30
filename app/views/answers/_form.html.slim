@@ -1,7 +1,4 @@
-= form_for([@question, Answer.new], remote: true) do |f|
-   p 
-   = f.label :body, 'Answer'
-   p
-   = f.text_area :body
-   p
-   = f.submit 'Post your answer'
+= form_for [@question, Answer.new], remote: true, html: { id: "new_answer"} do |f|
+   p= f.label :body, 'Answer'
+   p= f.text_area :body
+   p= f.submit 'Post your answer'

@@ -1,16 +1,15 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!
   before_action :load_question, only: [:create]
-  before_action :load_answer, only: [:edit, :update, :destroy]
+  before_action :load_answer, only: [:edit, :update, :destroy, :set_best]
 
   def edit
   end
 
   def update
-    if @answer.update(answer_params)
-      redirect_to @answer
-    else
-      render :edit
+    if current_user&.author_of? @answer
+    @answer.update(answer_params)
+    @question = @answer.question
     end
   end
 
@@ -24,10 +23,14 @@ class AnswersController < ApplicationController
     @question = @answer.question
     if current_user.author_of? @answer
       @answer.destroy!
-      flash[:notice] = 'Your answer was successfully deleted.'
-      redirect_to question_path(@question)
-    else
-      redirect_to question_path(@question)
+    end
+  end
+
+  def set_best
+    question = @answer.question
+    if current_user.author_of? question
+      @answer.set_best
+      render json: { message: "You've set the best answer" }
     end
   end
 
@@ -35,6 +38,7 @@ class AnswersController < ApplicationController
 
   def load_question
     @question = Question.find(params[:question_id])
+    #@question = @answer ? @answer.question : Question.find(params[:question_id])
   end
 
   def load_answer

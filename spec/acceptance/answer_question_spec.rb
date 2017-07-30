@@ -1,4 +1,4 @@
-require 'rails_helper'
+require_relative 'acceptance_helper'
 
 feature 'User answers a question', %q{
   In order to answer a question
@@ -8,7 +8,7 @@ feature 'User answers a question', %q{
   given(:user)     { create(:user) }
   given(:question) { create(:question) }
 
-  scenario 'Authenticated user answers a question', js: true do
+  scenario 'Authenticated posts a valid answer', js: true do
     sign_in(user)
     visit question_path(question)
 
@@ -16,9 +16,8 @@ feature 'User answers a question', %q{
     click_on 'Post your answer'
 
     #expect(page).to have_content 'Your answer was successfully created.'
-    save_and_open_page
     within '.answers' do
-    expect(page).to have_content 'My answer'
+      expect(page).to have_content 'My answer'
   end
 end
 
@@ -37,5 +36,5 @@ end
       expect(page).to have_content "Body can't be blank"
   end
  end
- 
+
 end

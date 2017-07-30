@@ -1,0 +1,9 @@
+$('.answers').html("<%= j render 'answers' %>");
+$('.edit-answer-link').click(function(e) {
+  e.preventDefault();
+  $('.set-best-link').show();
+  $(this).hide();
+  $('p').removeClass('glyphicon glyphicon-star');
+  $('p.answer-' + answer_id).addClass('glyphicon glyphicon-star');
+  $('div.answer-' + answer_id).prependTo('.answers');
+})
