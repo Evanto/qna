@@ -17,6 +17,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'slim-rails'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+gem 'carrierwave'
 # gem 'jquery-turbolinks'
 
 group :development, :test do
