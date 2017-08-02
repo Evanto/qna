@@ -10,6 +10,6 @@ RSpec.describe Question, type: :model do
    it { should belong_to(:user) }
    it { should have_db_index(:user_id) }
 
-   # it { should accept_nested_attributes_for(:attachments).allow_destroy(true) }
+   it { should accept_nested_attributes_for(:attachments).allow_destroy(true) }
 
 end

@@ -10,5 +10,10 @@ h2 New Question
   = f.label :body
   p
   = f.text_area :body
+  p Attachments:
+  .attachments
+    = f.fields_for :attachments do |a|
+      = a.label :file
+      = a.file_field :file
   p
   = f.submit 'Create'
