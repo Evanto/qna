@@ -5,7 +5,7 @@ RSpec.describe QuestionsController, type: :controller do
   let(:user) { create(:user) }
 
   describe 'GET #index' do
-    let(:questions) { create_list(:question, 2) } # синтаксис RSpec
+    let(:questions) { create_list(:question, 2) }
 
     before { get :index }
 
@@ -27,6 +27,10 @@ RSpec.describe QuestionsController, type: :controller do
 
     it 'renders show view' do
       expect(response).to render_template :show
+    end
+
+    it 'builds a new attachment for a question' do
+      expect(assigns(:answer).attachments.first).to be_a_new(Attachment)
     end
   end
 
