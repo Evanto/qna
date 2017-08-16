@@ -4,6 +4,8 @@
   p Attachments:
   .attachments
     = f.fields_for :attachments, Attachment.new do |a|
-      = a.label :file
-      = a.file_field :file
+      = render 'questions/attachment_fields', f: a
+    .links
+      = link_to_add_association 'add file', f, :attachments
+
   p= f.submit 'Post your answer'

@@ -12,8 +12,9 @@ h2 New Question
   = f.text_area :body
   p Attachments:
   .attachments
-    = f.fields_for :attachments do |a|
-      = a.label :file
-      = a.file_field :file
+    = f.fields_for :attachments do |a| 
+      = render 'questions/attachment_fields', f: a
+  .links
+    = link_to_add_association 'add file', f, :attachments  
   p
   = f.submit 'Create'
