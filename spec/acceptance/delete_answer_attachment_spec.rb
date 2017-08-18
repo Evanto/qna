@@ -15,10 +15,9 @@ feature 'Delete answer attachment', %q{
     sign_in(answer.user)
     visit question_path(question)
 
-    within '.answers' do
-      within ".attachments" do
-        click_on 'delete file'
-      end
+    within '.attachments' do
+      click_on 'delete file'
+
       expect(page).to_not have_content attachment.file.identifier
     end
   end

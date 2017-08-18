@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe AttachmentsController, type: :controller do
   let(:question)  { create(:question) }
+  let(:answer)    { create(:answer, question: question, user: @user) }
   let(:answer2)   { create(:answer, question: question) }
 
   describe 'DELETE #destroy' do
     sign_in_user
-    let(:answer)    { create(:answer, question: question, user: @user) }
     let!(:attachment) { create(:attachment, attachable: answer) }
 
     context 'answer of author' do
