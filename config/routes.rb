@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  delete 'attachments/:id' => 'attachment#destroy'
+  #delete 'attachments/:id' => 'attachment#destroy'
+  resources :attachments, only: :destroy
   devise_for :users
 
   resources :questions do
