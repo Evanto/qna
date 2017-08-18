@@ -18,10 +18,14 @@ feature 'Add files to answer', %q{
   scenario 'User adds a file while answering a question', js: true do
     fill_in 'Answer', with: 'Test answer'
     within(:xpath, './/form[@class="new_answer"]/div[@class="attachments"]/div[@class="nested-fields"][1]') do
-    attach_file 'File', "#{Rails.root}/spec/rails_helper.rb"
+      attach_file 'File', "#{Rails.root}/spec/rails_helper.rb"
     end
+    click_on 'add file'
+    all('input[type="file"]').last.set("#{Rails.root}/spec/spec_helper.rb")
+
     click_on 'Post your answer'
 
     expect(page).to have_link 'rails_helper.rb', href: '/uploads/attachment/file/1/rails_helper.rb'
+    expect(page).to have_link 'spec_helper.rb',  href: '/uploads/attachment/file/2/spec_helper.rb'
   end
 end
