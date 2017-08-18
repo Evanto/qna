@@ -11,7 +11,7 @@
           li id="attachment_#{a.id}"
             = link_to a.file.identifier, a.file.url 
             - if current_user&.author_of? answer
-              = link_to 'delete file', class: 'delete-attachment-link', data: { attachment_id: a.id }
+              /= link_to 'delete file', attachment_path(a), method: :delete, remote: true 
     
       p= link_to 'Edit', '', class: 'edit-answer-link', data: { answer_id: answer.id }
       p= link_to "delete answer", answer_path(answer), remote: true, method: :delete

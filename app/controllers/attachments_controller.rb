@@ -6,6 +6,7 @@ class AttachmentsController < ApplicationController
     @attachable = @attachment.attachable
     if current_user.author_of?(@attachable)
       @attachment.destroy
+    end
   end
 
 private
@@ -15,6 +16,6 @@ private
   end
 
   def attachment_params
-    params.require(:attachment).permit(:id, :file, :_destroy) 
+    params.require(:attachment).permit(:id, :file, :_destroy)
   end
 end

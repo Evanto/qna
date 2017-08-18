@@ -1,5 +1,3 @@
-
-
 $('.answers').append('<%= j render @answer %>');
 $('form#new_answer #answer_body').val('');
 $('.errors').html("<%= j render 'shared/errors', object: @answer %>");
