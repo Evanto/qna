@@ -20,6 +20,7 @@ feature 'Add files to answer', %q{
     within(:xpath, './/form[@class="new_answer"]/div[@class="attachments"]/div[@class="nested-fields"][1]') do
       attach_file 'File', "#{Rails.root}/spec/rails_helper.rb"
     end
+    
     click_on 'add file'
     all('input[type="file"]').last.set("#{Rails.root}/spec/spec_helper.rb")
 
