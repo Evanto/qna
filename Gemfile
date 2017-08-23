@@ -17,6 +17,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'slim-rails'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+gem 'carrierwave'
+gem 'remotipart', '~> 1.3.0'
+gem "cocoon"
+
 # gem 'jquery-turbolinks'
 
 group :development, :test do

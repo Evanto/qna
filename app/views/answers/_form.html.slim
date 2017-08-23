@@ -1,4 +1,10 @@
 = form_for [@question, Answer.new], remote: true, html: { id: "new_answer"} do |f|
-   p= f.label :body, 'Answer'
-   p= f.text_area :body
-   p= f.submit 'Post your answer'
+  p= f.label :body, 'Answer'
+  p= f.text_area :body
+  p Attachments:
+  .attachments
+    = f.fields_for :attachments, Attachment.new do |a|
+      = render 'questions/attachment_fields', f: a
+    .links
+      = link_to_add_association 'add file', f, :attachments
+  p= f.submit 'Post your answer'

@@ -1,6 +1,14 @@
 .questions
   h1 = @question.title
   p = @question.body
+  
+  ul.question_attachments
+    - @question.attachments.each do |a|
+      li= link_to a.file.identifier, a.file.url 
+      //- if current_user&.author_of? @question
+        //= link_to 'delete file', attachments_path(a), method: :delete, remote: true
+      
+      
   - if current_user&.author_of? @question
     p= link_to 'Edit', '', class: 'edit-question-link', remote: true
     p= link_to "Delete", question_path(@question), method: :delete
