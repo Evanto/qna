@@ -16,6 +16,6 @@ private
   end
 
   def attachment_params
-    params.require(:attachment).permit(:id, :file, :_destroy)
+    params.require(:attachment).permit(:id)
   end
 end
