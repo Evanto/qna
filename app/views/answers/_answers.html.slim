@@ -19,6 +19,13 @@
           = f.label :body, "Answer"
           = f.text_area :body
           = f.submit 'Save'
+      - if user_signed_in? && !current_user.author_of?(answer)
+        =< link_to 'Up', '#', class: 'vote-link', data: { value: 1, votable_id: answer.id, votable_type: 'Answer' }, style: "display: #{ answer.has_vote_by?(current_user) ? 'none' : '' }"
+        =< link_to 'Reset', '#', class: 'reset-vote-link', data: { votable_id: answer.id, votable_type: 'Answer' }, style: "display: #{ answer.has_vote_by?(current_user) ? '' : 'none' }"
+        =< link_to 'Down', '#', class: 'vote-link', data: { value: -1, votable_id: answer.id, votable_type: 'Answer' }, style: "display: #{ answer.has_vote_by?(current_user) ? 'none' : '' }"
+      p
+        | Rate:
+        span.rate=< answer.rating            
           
   
         
