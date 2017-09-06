@@ -10,8 +10,6 @@
         ul.answer_attachments
           - answer.attachments.each do |a|
             li= link_to a.file.identifier, a.file.url 
-            - if current_user&.author_of? answer
-          //= link_to 'remove file', attachment_path(a), method: :delete, remote: true
       
         p= link_to 'Edit', '', class: 'edit-answer-link', data: { answer_id: answer.id }
         p= link_to "delete answer", answer_path(answer), remote: true, method: :delete
@@ -19,6 +17,7 @@
           = f.label :body, "Answer"
           = f.text_area :body
           = f.submit 'Save'
+          
       - if user_signed_in? && !current_user.author_of?(answer)
         =< link_to 'Up', '#', class: 'vote-link', data: { value: 1, votable_id: answer.id, votable_type: 'Answer' }, style: "display: #{ answer.has_vote_by?(current_user) ? 'none' : '' }"
         =< link_to 'Reset', '#', class: 'reset-vote-link', data: { votable_id: answer.id, votable_type: 'Answer' }, style: "display: #{ answer.has_vote_by?(current_user) ? '' : 'none' }"
@@ -26,10 +25,8 @@
       p
         | Rate:
         span.rate=< answer.rating            
-          
-  
-        
-      -if current_user&.author_of? answer.question and !answer.best
+      
+      - if current_user&.author_of? answer.question and !answer.best
         p= link_to "set best", set_best_answer_path(answer), class: "set-best-link", remote: true, method: :patch, data: { answer_id: answer.id }
-      -elsif answer.best
+      - elsif answer.best
         p= link_to "set best", set_best_answer_path(answer), class: " best_link set-best-link", remote: true, method: :patch, data: { answer_id: answer.id }

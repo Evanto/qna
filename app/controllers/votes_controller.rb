@@ -1,10 +1,9 @@
 class VotesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :load_vote, only: [:reset]
+  before_action :load_votable, only: [:create]
 
-before_action :authenticate_user!, except: [:show]
-before_action :load_vote, only: [:reset]
-before_action :load_votable, only: [:create]
-
-def create
+  def create
     if !current_user.author_of?(@votable) && !@votable.has_vote_by?(current_user)
       current_user.votes.create({value: params[:value], votable: @votable})
       render json: @votable.rating
@@ -14,7 +13,7 @@ def create
   end
 
   def reset
-    if current_user.author_of?(@vote)
+    if current_user.author_of? @vote
       @votable = @vote.votable
       @vote.destroy!
       render json: @votable.rating
