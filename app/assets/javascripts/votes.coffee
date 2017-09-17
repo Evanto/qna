@@ -7,8 +7,9 @@ votes = ->
     e.preventDefault();
 
     value = $(this).data('value')
-    votable_id = $(this).data('votableId')
-    votable_type = $(this).data('votableType')
+    votable_id = $(this).data('votable-id')
+    votable_type = $(this).data('votable-type')
+    $(' .reset-vote-link').show()
 
     $.ajax
       type: "POST"
