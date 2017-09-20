@@ -1,15 +1,10 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
 votes = ->
   $(document).on 'click', '.vote-link', (e) ->
     e.preventDefault();
 
     value = $(this).data('value')
-    votable_id = $(this).data('votable-id')
-    votable_type = $(this).data('votable-type')
-    $(' .reset-vote-link').show()
+    votable_id = $(this).data('votableId')
+    votable_type = $(this).data('votableType')
 
     $.ajax
       type: "POST"

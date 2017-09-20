@@ -1,6 +1,6 @@
 - @question.answers.each do |answer|
   - if answer.persisted?
-    div id="answer_#{answer.id}"
+    div class="answer-#{answer.id}" id="answer_#{answer.id}"
       - if answer.best 
         p.glyphicon.glyphicon-star class="answer-#{answer.id}" = answer.body
       - else

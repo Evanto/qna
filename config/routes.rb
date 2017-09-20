@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     delete :reset, on: :collection
   end
 
-  #delete 'attachments/:id' => 'attachment#destroy'
   resources :attachments, only: :destroy
   devise_for :users
 

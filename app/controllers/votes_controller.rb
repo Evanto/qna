@@ -31,8 +31,4 @@ private
   def load_votable
     @votable = params[:votable_type].constantize.find(params[:votable_id])
   end
-
-  # def vote_params
-  #   params.permit(:value, :votable_id, :votable_type)
-  # end
 end
