@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe VotesController, type: :controller do
-  #let!(:user) { create(:user) }
   let!(:answer) { create(:answer) }
   let!(:vote) { create(:vote, votable: answer) }
 
@@ -14,7 +13,8 @@ RSpec.describe VotesController, type: :controller do
       end
 
       it 'saves a new downvote to the db' do
-        expect { post :create, params: { value: -1, votable_id: answer.id, votable_type: "Answer" }, format: :js }.to change(Vote, :count).by(1)
+        expect { post :create, params: { value: -1, votable_id: answer.id, votable_type: "Answer" }, format: :js }.to
+        change(Vote, :count).by(1)
       end
     end
 
