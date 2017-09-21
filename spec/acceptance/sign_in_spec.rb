@@ -14,7 +14,7 @@ given(:user) { create(:user) }
   end
 
   scenario 'A non-registered user attempts to sign in' do
-    visit new_user_session_path # юзер идет на страницу логина
+    visit new_user_session_path
     fill_in 'Email', with: 'user@domain.com'
     fill_in 'Password', with: '123123'
     click_on 'Log in'
