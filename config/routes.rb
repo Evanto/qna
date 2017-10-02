@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
 
   resources :attachments, only: :destroy
+
   devise_for :users
 
   resources :questions do
@@ -14,4 +15,6 @@ Rails.application.routes.draw do
   end
 
   root to: "questions#index"
+
+  mount ActionCable.server => '/cable'
 end
