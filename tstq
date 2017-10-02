@@ -1,0 +1,461 @@
+[33mcommit eebec40413ea8b252b0a6fff03346e01cb7070be[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Thu Sep 21 18:24:37 2017 +0300
+
+    minor fixes
+
+[33mcommit f40451d18eabd81ad2f327e0d783ef1402fa926c[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Thu Sep 21 12:17:31 2017 +0300
+
+    all tests green
+
+[33mcommit aef441ef29323bf1b7e4b821cd3d439bddd039f9[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed Sep 20 20:31:32 2017 +0300
+
+    vote for answers test ready
+
+[33mcommit 003b99c2bba8207e75f5031d2273a6a000e2a130[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed Sep 20 17:17:27 2017 +0300
+
+    factory, model, controller specs for vote are green
+
+[33mcommit 0d6393f53572e14dd8778c1921ceecde5d13c657[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Sun Sep 17 18:59:59 2017 +0300
+
+    Hotfix answer
+
+[33mcommit e75e50de3fd1afccae9debcc4e71c01b5954a386[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed Sep 6 18:29:41 2017 +0300
+
+    voting works ok for questions, but not for answers
+
+[33mcommit 1169e92d4ded1c8b223f94d5f6c38c87de492b06[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Mon Sep 4 20:41:55 2017 +0300
+
+    voting doesnt work properly
+
+[33mcommit d7ea7f0824208b233d0b236ed53462e77fb8be0e[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed Aug 23 21:59:13 2017 +0300
+
+    remove :file, _destroy from attachments_controller.rb params
+
+[33mcommit 4ebc3cffa85131ca25894c950699938dbae282f8[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Fri Aug 18 22:51:45 2017 +0300
+
+    minor fix
+
+[33mcommit d05b0bdc4cd6fa570dcdfc80f1721f1519bc4130[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Fri Aug 18 22:45:30 2017 +0300
+
+    all tests green
+
+[33mcommit 84437b72f8413df388e6c8e121953d23ded65111[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Fri Aug 18 14:41:05 2017 +0300
+
+    tests green
+
+[33mcommit b6e6e88cb580a3d24e0a375490a0559bcf373649[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Fri Aug 18 14:14:02 2017 +0300
+
+    removed attachable form 2 tests of attachments_controller_spec.rb
+
+[33mcommit 0017ef39b84e4328b44dd523bc7dcfbdb102cced[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Fri Aug 18 14:09:01 2017 +0300
+
+    attachments_controller_spec.rb
+
+[33mcommit 516e415bc9c3386a5876e52fac6ea3b9badb7058[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Fri Aug 18 11:09:39 2017 +0300
+
+    surrent state, delete attach tests fail
+
+[33mcommit 8b7497e0aa42089a978b375b93048204bb1c15d5[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed Aug 16 17:00:32 2017 +0300
+
+    file attachment tests for q and a pass
+
+[33mcommit a590dab865e10d4f0326673ff17c21a1f8ed91a6[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Thu Aug 10 17:05:53 2017 +0300
+
+    remotipart success
+
+[33mcommit 6132452d23d07f4aee9ce0529c12a747a95dc2b7[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Tue Aug 8 23:51:07 2017 +0300
+
+    add file upload button to answers, have to finalize this feature and tests
+
+[33mcommit 23b9f1b01e9d97f5a1963081f6ec9e639a73bee2[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Mon Aug 7 21:17:34 2017 +0300
+
+    fix errors:ActiveRecord::StatementInvalid, ActionController::UrlGenerationError
+
+[33mcommit db4027cacc5ec6662bc9e9ee9d9ef6478145b8ae[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Thu Aug 3 11:56:43 2017 +0300
+
+    can open question's file as a link, all tests green
+
+[33mcommit c3f906ebc9a6828ea5cc24284feba6a1eb1302a5[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed Aug 2 23:27:08 2017 +0300
+
+    add nested form for file
+
+[33mcommit df46b1417223b3ea7fd406dff517b2d66a641379[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Tue Aug 1 23:40:19 2017 +0300
+
+    Attachment model ready, 1 test red
+
+[33mcommit 42f2d2106c2a9365ecbe0120e30fbca1b536f5e8[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Thu Jul 27 17:31:18 2017 +0300
+
+    all stories and tests work
+
+[33mcommit 60d58037875dc7bbfa189cc3bf7bec31d30774ba[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Thu Jul 27 11:09:20 2017 +0300
+
+    fix answer div/p nesting, set best acceptance almost done
+
+[33mcommit 73b5a68399ef8f2f07002b0bf771c70b92d62782[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Mon Jul 24 21:22:02 2017 +0300
+
+    set best all stories work
+
+[33mcommit 302c70a57b37af2bccf44a7950e885e2b9df834c[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Mon Jul 24 13:54:24 2017 +0300
+
+    add bootstrap
+
+[33mcommit b834db64a8685edbc9bfa1470efba8fa42c8e44e[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Mon Jul 24 12:49:57 2017 +0300
+
+    set best without ajax works
+
+[33mcommit 731f65addf25d3aa58dea647b3d476d9e348663d[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed Jul 19 19:57:12 2017 +0300
+
+    add Ajax question edit, all tests green
+
+[33mcommit 90963aa412ac0b18f7ac90c08dc1bfa60c7ae897[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Tue Jul 18 00:54:51 2017 +0300
+
+    author can edit his question html
+
+[33mcommit 8efbf17f205bc6aec22254cfddb09d1ad53d8d29[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Mon Jul 17 02:54:05 2017 +0300
+
+    Ajax delete answer completed with all tests green
+
+[33mcommit aae2c4036fc53e0a16a6ef70094650ee3742e054[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Tue Jul 11 19:48:48 2017 +0300
+
+    Ajax answers update definitely works, with tests
+
+[33mcommit 9b8395c92d06432186eeea2362fcbae7fd4075ec[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Mon Jul 10 20:48:15 2017 +0300
+
+    ajax answer update and tests workgit add .
+
+[33mcommit 2cfb3638bae5d15e3668334c39c5fead6a131f70[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Mon Jul 10 15:24:39 2017 +0300
+
+    Ajax add edit answer work (without tests)
+
+[33mcommit cb1b60532e5771695f09eff7020d241f5b07c495[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Sat Jul 8 14:37:33 2017 +0300
+
+    add answer update via ajax, but it updates only after page reload after a new answer was posted
+
+[33mcommit 5cc0247b155b51ab30979e45162708c591fc6599[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Sat Jul 1 17:54:32 2017 +0300
+
+    move from selenium-webdriver to capybara_webkit
+
+[33mcommit bf7b2e60b0b1c17f44c4c17cb6463d6a191b38cc[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Sat Jul 1 11:12:03 2017 +0300
+
+    move acceptance configs from rails_helper to acceptance/acceptance_helper
+
+[33mcommit 9cd6cc755f103b9442327408fd48c26540f9e486[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Mon Jun 26 02:04:23 2017 +0300
+
+    fix pr comments
+
+[33mcommit 2965872f5447a574b460cfc9a5d229ce920d8ccc[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Mon Jun 26 01:21:51 2017 +0300
+
+    partial _answer appends without reloading questions list
+
+[33mcommit 60fa4bb59fd393a070ef89ae582e7460b42f2666[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Sat Jun 24 01:28:37 2017 +0300
+
+    all works, all works, all tests freen, database_cleaner configured
+
+[33mcommit ff5d3ab0b7c345d13888eb7a457b04d74882a454[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Fri Jun 23 22:33:31 2017 +0300
+
+    everything works, all tests green, no database_cleaner gem, didnt touch helper
+
+[33mcommit aa32219a98043951ca1d1795c243933ffafff3ac[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed Jun 21 20:26:39 2017 +0300
+
+    add remote: true, form works
+
+[33mcommit 7905692805fed5b47347827f966859f605691a39[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Mon Jun 19 22:24:06 2017 +0300
+
+    2 of 3 pr comments fixed
+
+[33mcommit 3652ea13e2d31f191387c7d67afc297a020a14c5[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Fri Jun 16 18:18:08 2017 +0300
+
+    app works, test work, add sequences to fabrics
+
+[33mcommit 83b308367128f76d210fc797cb9f52f9efcf5293[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Fri Jun 16 16:31:02 2017 +0300
+
+    app works! all tests work! still have to fix some pr comments
+
+[33mcommit 7867e92949fad1df2af2730e4bfe2e9e0344be57[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Thu Jun 15 20:05:49 2017 +0300
+
+    have to fix 1 failing test
+
+[33mcommit 06c3ab7ca214e5c54e2e7563b7ac1e3f6af13cf9[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Thu Jun 15 19:16:26 2017 +0300
+
+    have to fix 2 more tests june 15
+
+[33mcommit ed47f9c6b8c508e528038e9bf7935189648d3acb[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed Jun 14 23:21:56 2017 +0300
+
+    app works, but 7 tests do not pass
+
+[33mcommit 3ae6d0af9d05c1d4ed3d78e7531ee9291ab8e661[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed Jun 14 21:54:01 2017 +0300
+
+    same, other redirect in answer destroy
+
+[33mcommit 9441a8f342fb782596147f1d155369737bc979fe[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed Jun 14 21:50:30 2017 +0300
+
+    app works, pr comments except for 2 last ones addressed, 12 tests do not pass
+
+[33mcommit 5a6d3a28424280339de49d8e2d0b81bcb630d793[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed Jun 14 13:53:13 2017 +0300
+
+    app workds, errors for question and answer work, 6 test fails, need to do the rest of pr comments
+
+[33mcommit a854423e9a2c4a33f9b6ecc37e57f193692a304c[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed Jun 14 13:18:56 2017 +0300
+
+    app workds, tests - 6 fails, need to add errors to questions and do the rest of pr comments
+
+[33mcommit 7783f23871e4f09d07e2156bec75fd55c6a45982[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Sun Jun 11 00:40:25 2017 +0300
+
+    add error messages to view
+
+[33mcommit 9ff3bd110d189ae0579b2e56ef19e263a4429241[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Fri Jun 9 16:49:57 2017 +0300
+
+    server error fixed, application.html.slim fixed
+
+[33mcommit 1ca2e42a55585597463a38ba1bd21f38fd7bab78[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Fri Jun 9 00:42:59 2017 +0300
+
+    pr comments: add author_of? with tests
+
+[33mcommit dd02f2494b53eee955d9aaa720d226dcb59814dd[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Thu Jun 8 00:41:53 2017 +0300
+
+    rspec spec all tests green
+
+[33mcommit 035143b1f184ba0809f84594625c9549fb7c27cb[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed Jun 7 19:52:49 2017 +0300
+
+    view_question_with_answers_spec, delete_answer_spec are green, user can't see delete links under other users answers
+
+[33mcommit ec86f28b1f8aa6a1b7901342ce125411133cbc22[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed Jun 7 12:46:26 2017 +0300
+
+    add answer and delete answer work fine
+
+[33mcommit c74c8f20692b826069cc70318bb33df6d8a98714[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Tue Jun 6 16:21:26 2017 +0300
+
+    show view for question and its partials work, but buttons create and delete answer don't
+
+[33mcommit 9ce9685f72def6afbaef8fc0ce659832aee745e3[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Sun Jun 4 23:56:49 2017 +0300
+
+    sign_up_spec green
+
+[33mcommit e4cd3dae62b9374127ec03acc0ebf5906f52f353[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Sun Jun 4 22:17:41 2017 +0300
+
+    test sign_out_spec green
+
+[33mcommit f56a834d08ffb4904271578b4f9fecc9b64366c1[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Sun Jun 4 12:17:52 2017 +0300
+
+    view_questions_list_spec green
+
+[33mcommit c6168d76d5b0a405336700c921518c6fbdc61e18[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Sun Jun 4 02:19:07 2017 +0300
+
+    refactored first 2 acceptance tests according to video, started 1 more test
+
+[33mcommit e8af68cfc9bff1bb90886ccb8668ece3562d98c8[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Fri Jun 2 19:58:34 2017 +0300
+
+    all 45 tests of the video are  green
+
+[33mcommit cd2087a8434c820925e6244fa12b1f0b7f3fcd9f[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Thu Jun 1 14:07:59 2017 +0300
+
+    fix non-migrated migrations, get rid of no-association-in-model errors
+
+[33mcommit c77aab1eaabf4d8669930ec043a02b507fa9582f[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed May 31 19:14:18 2017 +0300
+
+    added foreign keys to questions and answers tables, ran all tests, 28 failures of 44 tests
+
+[33mcommit 7c30da62c55ea7c8ffb72efc1a31599c387f16ee[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Mon May 29 17:13:15 2017 +0300
+
+    create_question_spec.rb tests green, 1hr of video done
+
+[33mcommit 5ccd25ab44396553687c19e10e2c218dbdd4fd73[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Sat May 27 01:05:34 2017 +0300
+
+    fixed WARN
+
+[33mcommit 0af695dedf72725e1a575e3a46af1d26fce387f4[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Fri May 26 22:07:37 2017 +0300
+
+    fixed module-4 PR comments
+
+[33mcommit 7751dd28012d75ea4654fe4bf29237e21535e07f[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Thu May 25 23:40:43 2017 +0300
+
+    can't take module 4 anymore
+
+[33mcommit b46c07d3315518ffad2948fa32b67db65ff679ea[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Thu May 25 22:31:18 2017 +0300
+
+    #new, #create tests for Answer green
+
+[33mcommit 88fa480419a8e272e5be87cba680840d4671f28b[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Thu May 25 21:30:24 2017 +0300
+
+    Answers controller and spes half-ready
+
+[33mcommit b55fb7c18f055664e02262cb0f42e5a6b42031b5[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Thu May 25 01:55:33 2017 +0300
+
+    finished Question controller and spec, video 100% complete
+
+[33mcommit 62ca4efe11d9c9d18e0fb06c6d3d4c9a07c7bd28[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Tue May 23 02:52:59 2017 +0300
+
+    50% of module 4 video
+
+[33mcommit c488a192a356a789711fce6a115086fe94a1c612[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Sun May 21 19:35:07 2017 +0300
+
+    add association to spec/factories/answers.rb (factory_girl)
+
+[33mcommit e686b067eba49b7a7d07e51d97fca961c0798886[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Sat May 20 00:03:00 2017 +0300
+
+    pull request 1 comments fixed
+
+[33mcommit 52627dad741ba0a8b5d472cd902ec98272d44971[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Thu May 18 17:51:10 2017 +0300
+
+    add foreign key, tests pass
+
+[33mcommit 69316b9efbf5388ca8adf7de38bc0f42bf5c1fa6[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Thu May 18 15:55:18 2017 +0300
+
+    add shoulda_matchers tests to models
+
+[33mcommit 6d1409003099c087f396f4efb6a52d9b74993c64[m
+Author: Eva Medvedeva <ohmywob@gmail.com>
+Date:   Wed May 17 17:38:57 2017 +0300
+
+    init configured repo
