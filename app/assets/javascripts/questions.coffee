@@ -10,6 +10,15 @@ ready = ->
     $('.answers').hide();
     $('form.update-question-form').show();
 
+  App.cable.subscriptions.create('QuestionsChannel', {
+    connected: ->
+      console.log 'Connected!'
+      @perform 'follow'
+    ,
+    received: (data) ->
+      console.log 'received', data
+    })
+
 $(document).ready(ready);                   # вешаем функцию ready на событие document.ready
 $(document).on('turbolinks:load', ready);   # вешаем функцию ready на событие page:load
 $(document).on('turbolinks:update', ready); # вешаем функцию ready на событие page:update

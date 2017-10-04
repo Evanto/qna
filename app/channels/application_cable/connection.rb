@@ -1,7 +1,10 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
-    def Connection
-      reject_unauthorized_connection if cookies[:secret] != '123'
+    def connection
+      if cookies[:secret] != '123'
+        Rails.logger.info "Reject connection"
+        reject_unauthorized_connection
+      end
     end
   end
 end
