@@ -8,10 +8,11 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    #gon.users = User.limit(10)
     gon.question = @question
     @answer = @question.answers.build
     @answer.attachments.build
-  #  gon.question_id = params[:id]
+  #gon.question_id = params[:id]
 
   end
 
