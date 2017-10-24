@@ -8,7 +8,6 @@ div.questions
       h3= link_to question.title, question
       - if user_signed_in? && current_user.author_of?(question)
         '
-        = link_to 'Delete', question, method: :delete
         - if user_signed_in? && !current_user.author_of?(question)
         =< link_to 'Up', '#', class: 'vote-link', data: { value: 1, votable_id: question.id, votable_type: 'Question' }, style: "display: #{ question.has_vote_by?(current_user) ? 'none' : '' }"
         =< link_to 'Reset', '#', class: 'reset-vote-link', data: { votable_id: question.id, votable_type: 'Question' }, style: "display: #{ question.has_vote_by?(current_user) ? '' : 'none' }"

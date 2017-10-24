@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
     gon.question = @question
     @answer = @question.answers.build
     @answer.attachments.build
-  #gon.question_id = params[:id]
+    #gon.question_id = params[:id]
 
   end
 
