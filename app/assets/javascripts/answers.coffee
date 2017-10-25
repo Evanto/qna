@@ -40,6 +40,4 @@ $ ->
     $('div.answer-' + answer_id).prependTo('div.answers');
     return;
 
-$(document).ready(ready);                   # вешаем функцию ready на событие document.ready
 $(document).on('turbolinks:load', ready);   # вешаем функцию ready на событие page:load
-$(document).on('turbolinks:update', ready); # вешаем функцию ready на событие page:update
