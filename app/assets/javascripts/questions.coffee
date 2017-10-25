@@ -7,7 +7,6 @@ ready = ->
     connected: ->
       @perform 'follow'
       console.log 'Connected!'
-      #alert gon.users
     ,
 
     received: (data) ->
@@ -22,6 +21,4 @@ ready = ->
     $('.answers').hide();
     $('form.update-question-form').show();
 
-$(document).ready(ready);                   # вешаем функцию ready на событие document.ready
 $(document).on('turbolinks:load', ready);   # вешаем функцию ready на событие page:load
-$(document).on('turbolinks:update', ready); # вешаем функцию ready на событие page:update
