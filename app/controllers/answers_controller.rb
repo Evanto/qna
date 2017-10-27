@@ -51,12 +51,16 @@ class AnswersController < ApplicationController
   end
 
   def publish_answer
-  return if @answer.errors.any?
+    return if @answer.errors.any?
 
-  ActionCable.server.broadcast(
-    "question_#{@question.id}",
-    @answer.to_json(include: :attachments)
-  )
+    ActionCable.server.broadcast(
+      "question_answers_#{params[:question_id]}",
+      ApplicationController.render(
+        partial: 'answers/answer',
+        formats: :json,
+        locals: { answer: @answer }
+      )
+    )
   end
 
 end

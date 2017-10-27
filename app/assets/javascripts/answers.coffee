@@ -5,7 +5,7 @@
 # Объявляем функцию ready, внутри которой можно поместить обработчики событий и другой код,
 # который должен выполняться при загрузке страницы
 
-$ ->
+ready = ->
   if gon.question
     App.cable.subscriptions.create({
       channel: 'AnswersChannel',
@@ -18,7 +18,7 @@ $ ->
       received: (data) ->
         answer = JSON.parse(data)
         if !gon.current_user || (answer.user_id != gon.current_user.id)
-          $('#answer').append(JST['templates/answer']({
+          $('.answer').append(JST['templates/answer']({
             answer: answer
           }))
     })
