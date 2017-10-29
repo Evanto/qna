@@ -4,10 +4,6 @@ class AnswersController < ApplicationController
   before_action :load_answer, only: [:edit, :update, :destroy, :set_best]
   after_action :publish_answer, only: [:create]
 
-  def edit
-  end
-
-
   def update
     if current_user&.author_of? @answer
     @answer.update(answer_params)
@@ -52,14 +48,9 @@ class AnswersController < ApplicationController
 
   def publish_answer
     return if @answer.errors.any?
-
     ActionCable.server.broadcast(
-      "question_answers_#{params[:question_id]}",
-      ApplicationController.render(
-        partial: 'answers/answer',
-        formats: :json,
-        locals: { answer: @answer }
-      )
+      "question_answers_#{@answer.question_id}",
+       ApplicationController.render(partial: 'answers/answer', formats: :json, locals: { answer: @answer })
     )
   end
 

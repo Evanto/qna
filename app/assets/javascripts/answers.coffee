@@ -16,11 +16,9 @@ ready = ->
       ,
 
       received: (data) ->
-        answer = JSON.parse(data)
-        if !gon.current_user || (answer.user_id != gon.current_user.id)
-          $('.answer').append(JST['templates/answer']({
-            answer: answer
-          }))
+      #  answer = JSON.parse(data)
+      #  if !gon.current_user || (answer.user_id != gon.current_user.id)
+          $('.answer').append data['answer']
     })
 
   $('.answers').on 'click', '.edit-answer-link', (e) ->
