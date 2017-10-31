@@ -50,7 +50,7 @@ class AnswersController < ApplicationController
     return if @answer.errors.any?
     ActionCable.server.broadcast(
       "question_answers_#{@answer.question_id}",
-      @answer
+      @answer.to_json
        #ApplicationController.render(partial: 'answers/answer', formats: :json, locals: { answer: @answer })
     )
   end
