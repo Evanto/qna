@@ -17,6 +17,11 @@ ready = ->
 
       received: (data) ->
         answer = JSON.parse(data)
+        #console.log(answer)
+        #alert(answer);
+        #console.log(JSON.stringify(answer))
+
+        #alert("Hello! I am an alert box!!")
         if !gon.current_user || (answer.user_id != gon.current_user.id)
           $('.answers').append(JST['templates/answer']({
             answer: answer

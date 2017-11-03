@@ -20,6 +20,7 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'carrierwave'
 gem 'remotipart', '~> 1.3.0'
 gem "cocoon"
+gem 'skim'
 gem 'gon'
 
 # gem 'jquery-turbolinks'
