@@ -1,2 +1,2 @@
-p class="answer-#{answer.id}" = answer.body
+p class="answer-#{@answer.id}" = @answer.body
 //p class="answer-#{answer.id}" = answer.body

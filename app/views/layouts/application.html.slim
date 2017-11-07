@@ -4,11 +4,11 @@ html lang="en"
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
     title QnA
 
-    = Gon::Base.render_data
     = csrf_meta_tags
     = action_cable_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = Gon::Base.render_data
 
   body
     div= link_to "QnA", root_path

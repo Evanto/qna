@@ -13,20 +13,22 @@ ready = ->
     },{
       connected: ->
         @perform 'follow'
+        console.log(gon)
       ,
 
       received: (data) ->
         answer = JSON.parse(data)
-        #console.log(answer)
+        console.log(answer)
         #alert(answer);
         #console.log(JSON.stringify(answer))
 
         #alert("Hello! I am an alert box!!")
+        console.log(gon)
         if !gon.current_user || (answer.user_id != gon.current_user.id)
           $('.answers').append(JST['templates/answer']({
             answer: answer
           }))
-          #$('.answer').append data('div.answer-' + answer_id)
+      #  $('.answer').append('<p>' + answer.body + '</p>')
     })
 
   $('.answers').on 'click', '.edit-answer-link', (e) ->
