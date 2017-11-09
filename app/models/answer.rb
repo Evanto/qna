@@ -4,6 +4,7 @@ class Answer < ApplicationRecord
   has_many :attachments, as: :attachable, dependent: :destroy
 
   include Votable
+  include Commentable
 
   validates :body, presence: true
 
