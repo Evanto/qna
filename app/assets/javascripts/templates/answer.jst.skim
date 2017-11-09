@@ -1,2 +1,4 @@
 p class="answer-#{@answer.id}" = @answer.body
 //p class="answer-#{answer.id}" = answer.body
+// - if gon.current_user.id == gon.question.user_id
+//   show set best link

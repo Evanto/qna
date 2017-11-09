@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    gon.push({user: 123,
+    gon.push({current_user: current_user,
               question: @question
             })
     @answer = @question.answers.build

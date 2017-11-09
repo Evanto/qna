@@ -13,7 +13,8 @@ ready = ->
     },{
       connected: ->
         @perform 'follow'
-        console.log(gon)
+      #  gon.watch
+      #  console.log(gon)
       ,
 
       received: (data) ->
@@ -23,7 +24,8 @@ ready = ->
         #console.log(JSON.stringify(answer))
 
         #alert("Hello! I am an alert box!!")
-        console.log(gon)
+        gon.watch
+        console.log(gon.current_user)
         if !gon.current_user || (answer.user_id != gon.current_user.id)
           $('.answers').append(JST['templates/answer']({
             answer: answer
