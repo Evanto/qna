@@ -1,0 +1,6 @@
+<% if @comment.errors.present? %>
+  $("#comments_section_<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %> .comment_errors").html("<%= j render 'errors', item: @comment %>");
+<% else %>
+  $("#comments_section_<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %> .comment_errors").html("");
+<% end %>
+  $("#comments_section_<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %> form#new_comment #comment_body").val('');

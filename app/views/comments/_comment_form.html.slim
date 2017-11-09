@@ -1,0 +1,9 @@
+h4 Add a comment
+.comment_errors
+= form_for [@commentable, Comment.new], remote: true do |f|
+  = f.hidden_field :commentable_id
+  = f.hidden_field :commentable_type
+  .form-group
+    = f.label :body, 'Comment'
+    = f.text_area :body, class: 'form-control'
+  p= f.submit 'Create', class: 'btn btn-primary'
