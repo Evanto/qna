@@ -8,15 +8,11 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    gon.push({current_user: current_user,
-              question: @question
-            })
     @answer = @question.answers.build
     @comment = @question.comments.build
     @answer.attachments.build
-    #gon.question_id = @question.id
-    #gon.question_user_id = @question.user_id
-
+    gon.question_id = @question.id
+    gon.question_user_id = @question.user_id
   end
 
   def new

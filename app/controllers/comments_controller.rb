@@ -5,12 +5,22 @@ class CommentsController < ApplicationController
   after_action :publish_comment, only: [:create]
 
   def create
-    @comment = @commentable.comments.create(comment_params.merge(user: current_user))
+    #@comment = @commentable.comments.create(comment_params.merge(user: current_user))
+    @comment = @commentable.comments.new(comment_params)
+    @comment.user = current_user
+    @comment.save
+    #render 'comments/create'
   end
 
 private
   def load_commentable
-    @commentable = params[:comment][:commentable_type].constantize.find(params[:comment][:commentable_id])
+    #resource, id = request.path.split('/')[1, 2]
+    #@commentable = resource.singularize.classify.constantize.find(id)
+    #@commentable = (params[:comment][:commentable_type]).constantize.find(params[:comment][:commentable_id])
+    @commentable = commentable_type.classify.constantize.find(params[:commentable_id])
+    #@commentable = commentable_name.classify.constantize.find(params[commentable_id])
+  #  @commentable = (params[:commentable_type]).constantize.find(params[:commentable_id])
+    #@commentable = params[:comment][:commentable_type].constantize.find(params[:comment][:commentable_id])
   end
 
   def comment_params
@@ -21,7 +31,7 @@ private
     return if @comment.errors.any?
     ActionCable.server.broadcast(
       "comments_for_question_#{get_question_id}_and_its_answers",
-      ApplicationController.render(partial: 'comments/comment', formats: :json, locals: { comment: @comment })
+      ApplicationController.render( partial: 'comments/comment', formats: :json, locals: { comment: @comment })
     )
   end
 
