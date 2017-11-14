@@ -1,6 +1,14 @@
 <% if @comment.errors.present? %>
-  $("#comments_section_<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %> .comment_errors").html("<%= j render 'errors', item: @comment %>");
+  <% @comment.errors.full_messages.each do |message| %>
+
+    <% if @comment.commentable.class.name == 'Answer' %>
+      $('.answer-comment-errors').html('<%= j message %>');
+    <% else %>
+      $('.question-comment-errors').html('<%= j message %>');
+    <% end %>
+
+  <% end %>
 <% else %>
-  $("#comments_section_<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %> .comment_errors").html("");
+  $('.comments-of-<%= @comment.commentable_type %>-<%= @comment.commentable_id %> ul').append('<%= j render @comment %>');
+  $('#comment_body').val('')
 <% end %>
-  $("#comments_section_<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %> form#new_comment #comment_body").val('');

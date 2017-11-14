@@ -1,6 +1,6 @@
 h4 Add a comment
 .comment_errors
-= form_for [@commentable, Comment.new], remote: true do |f|
+= form_for [@commentable, Comment.new], remote: true, method: :post do |f|
   = f.hidden_field :commentable_id
   = f.hidden_field :commentable_type
   .form-group
