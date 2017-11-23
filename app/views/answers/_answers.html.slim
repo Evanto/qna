@@ -35,8 +35,8 @@
       .answer_comments id="comments_section_answer_#{answer.id}"
         p.notice
         ul.comments_list.list-group id="comments_answer_#{answer.id}"
-          = render answer.comments
+          = render @answer.comments
 
         - if user_signed_in?
           .row
-            = render 'comments/comment_form', comment: answer.comments.new
+            //= render 'comments/comment_form', object: @answer.comments.new

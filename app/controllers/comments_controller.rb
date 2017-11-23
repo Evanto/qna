@@ -1,45 +1,36 @@
+
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_commentable, only: [:create]
 
-  after_action :publish_comment, only: [:create]
-
-  def create
-    #@comment = @commentable.comments.create(comment_params.merge(user: current_user))
-    @comment = @commentable.comments.new(comment_params)
-    @comment.user = current_user
-    @comment.save
-    #render 'comments/create'
+  def show
+    @commentable = "Question"
+    @comment = @commentable.comments.build(comment_params)
+    #@comment = @commentable = Traveldeal.find(params[:id])
   end
 
-private
+  def create
+    @commentable = @comment.commentable
+    @comment = @commentable.comments.build(params[:comment])
+    @comment.user_id = current_user.id
+    @comment.save
+    #@comment = @commentable.comments.build(comment_params.merge(user: current_user, id: id))
+    #@comment = @commentable.comments.create(comment_params.merge(user: current_user, id: id))
+    puts @commentable
+  end
+
+  private
+
   def load_commentable
-    #resource, id = request.path.split('/')[1, 2]
-    #@commentable = resource.singularize.classify.constantize.find(id)
-    #@commentable = (params[:comment][:commentable_type]).constantize.find(params[:comment][:commentable_id])
-    @commentable = commentable_type.classify.constantize.find(params[:commentable_id])
-    #@commentable = commentable_name.classify.constantize.find(params[commentable_id])
-  #  @commentable = (params[:commentable_type]).constantize.find(params[:commentable_id])
-    #@commentable = params[:comment][:commentable_type].constantize.find(params[:comment][:commentable_id])
+    @commentable = @comment.commentable
+      if @commentable.class == Question
+        @commentable.id
+      elsif @commentable.class == Answer
+        @commentable.question_id
+      end
   end
 
   def comment_params
-    params.require(:comment).permit(:body, :commentable_id, :commentable_type);
-  end
-
-  def publish_comment
-    return if @comment.errors.any?
-    ActionCable.server.broadcast(
-      "comments_for_question_#{get_question_id}_and_its_answers",
-      ApplicationController.render( partial: 'comments/comment', formats: :json, locals: { comment: @comment })
-    )
-  end
-
-  def get_question_id
-    if @commentable.class == Question
-      @commentable.id
-    elsif @commentable.class == Answer
-      @commentable.question_id
-    end
+    params.require(:comment).permit(:body, :id, :commentable_type, :commentable_id )
   end
 end

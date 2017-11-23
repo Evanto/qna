@@ -8,7 +8,6 @@
       //- if current_user&.author_of? @question
         //= link_to 'delete file', attachments_path(a), method: :delete, remote: true
 
-
   - if current_user&.author_of? @question
     p= link_to 'Edit', '', class: 'edit-question-link', remote: true
     p= link_to "Delete", question_path(@question), method: :delete
@@ -21,13 +20,26 @@
 
 h3 Comments
 .question_comments id="comments_section_question_#{@question.id}"
-  p.notice
-  ul.comments_list.list-group id="comments_question_#{@question.id}"
-    = render @question.comments
+  //p.notice
+  //ul.comments_list.list-group id="comments_question_#{@question.id}"
+    //= render @question.comments
 
   - if user_signed_in?
     .row
-      = render 'comments/comment_form', comment: @comment
+      = render 'comments/comment_form', locals: { commentable: @commentable }
+
+  - @question.comments.each do |comment|
+    =comment.body
+    =@commentable
+    =@comment.commentable_type
+
+//.comments-question data= { id: "#{@question.id}" }
+  //| Comments:
+  //div class='question_#{ @question.id }'
+    //.comments-question-list
+      //= render @question.comments.order(created_at: :asc)
+  //= render 'comments/form', commentable: @question
+
 
 h3 Answers
 .answers

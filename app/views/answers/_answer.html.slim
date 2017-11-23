@@ -24,12 +24,12 @@
     -elsif answer.best
       p= link_to "set best", set_best_answer_path(answer), class: " best_link set-best-link", remote: true, method: :patch, data: { answer_id: answer.id }
 
-h4 Answer comments
-.answer_comments id="comments_section_answer_#{answer.id}"
-  p.notice
-  ul.comments_list.list-group id="comments_answer_#{answer.id}"
-    = render answer.comments
+//h4 Answer comments
+//.answer_comments id="comments_section_answer_#{answer.id}"
+  //p.notice
+  //ul.comments_list.list-group id="comments_answer_#{answer.id}"
+    //= render answer.comments
 
-  - if user_signed_in?
-    .row
-      = render 'comments/comment_form', comment: answer.comments.new
+  //- if user_signed_in?
+    //.row
+      //= render 'comments/comment_form', comment: answer.comments.new
