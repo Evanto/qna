@@ -26,12 +26,10 @@ h3 Comments
 
   - if user_signed_in?
     .row
-      = render 'comments/comment_form', locals: { commentable: @commentable }
+      = render 'comments/comment_form', commentable: @question
 
   - @question.comments.each do |comment|
-    =comment.body
-    =@commentable
-    =@comment.commentable_type
+    p= comment.body
 
 //.comments-question data= { id: "#{@question.id}" }
   //| Comments:

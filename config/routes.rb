@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :comments, only: [:create]
-
   resources :votes, only: [:create] do
     delete :reset, on: :collection
   end
