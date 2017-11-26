@@ -19,25 +19,13 @@
       p= f.submit 'Save'
 
 h3 Comments
-.question_comments id="comments_section_question_#{@question.id}"
-  //p.notice
-  //ul.comments_list.list-group id="comments_question_#{@question.id}"
-    //= render @question.comments
-
+.question_comments id="comments-of-question_#{@question.id}"
   - if user_signed_in?
     .row
       = render 'comments/comment_form', commentable: @question
 
   - @question.comments.each do |comment|
     p= comment.body
-
-//.comments-question data= { id: "#{@question.id}" }
-  //| Comments:
-  //div class='question_#{ @question.id }'
-    //.comments-question-list
-      //= render @question.comments.order(created_at: :asc)
-  //= render 'comments/form', commentable: @question
-
 
 h3 Answers
 .answers
