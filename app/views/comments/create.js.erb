@@ -1,4 +1,4 @@
-alert('Eva just do it!');
+//alert('Eva just do it!');
 <% if @comment.errors.present? %>
   <% @comment.errors.full_messages.each do |message| %>
 
@@ -10,9 +10,9 @@ alert('Eva just do it!');
 
   <% end %>
 <% else %>
-  alert('#comments-of-<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %>');
-  console.log('#comments-of-<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %>');
-  console.log('<%= j render @comment %>');
+  //alert('#comments-of-<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %>');
+  //console.log('#comments-of-<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %>');
+  //console.log('<%= j render @comment %>');
   $('#comments-of-<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %>').append('<%= j render @comment %>');
   $('#comment_body').val('')
 <% end %>

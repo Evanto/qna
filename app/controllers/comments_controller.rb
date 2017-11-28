@@ -19,4 +19,24 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:body)
   end
+
+  def publish_comment
+    return if @comment.errors.any?
+    ActionCable.server.broadcast(
+      "comments_for_question_#{get_question_id}_and_its_answers",
+      ApplicationController.render(partial: 'comments/comment', formats: :json, locals: { comment: @comment })
+    )
+  end
+
+  def get_question_id
+    if @commentable.class == Question
+      gon.question_id
+      @commentable.question_id
+      @commentable.id
+
+    elsif @commentable.class == Answer
+      @commentable.question_id
+    end
+  end
+
 end
