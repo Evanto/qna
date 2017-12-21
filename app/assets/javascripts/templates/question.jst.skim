@@ -1,0 +1,18 @@
+li.list-group-item id="question_#{@id}"
+  a href="/questions/#{@id}" =@title
+
+  - if @user_id == gon.user_id
+    '
+    a.delete-answer-link data-remote="true" rel="nofollow" data-method="delete" href="/questions/#{@id}" Delete
+
+  - if gon.user_id && (@user_id != gon.user_id)
+    '
+    a.vote-link data-value="1" data-votable-id="#{@id}" data-votable-type="Question" href="#" Up
+    '
+    a.reset-vote-link data-votable-id="#{@id}" data-votable-type="Question" style="display: none" href="#" Reset
+    '
+    a.vote-link data-value="-1" data-votable-id="#{@id}" data-votable-type="Question" href="#" Down
+
+  //p
+  //  | Rate:
+//span.badge.rate=< @rating

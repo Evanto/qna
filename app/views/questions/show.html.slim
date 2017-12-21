@@ -1,14 +1,13 @@
 .questions
   h1 = @question.title
   p = @question.body
-  
+
   ul.question_attachments
     - @question.attachments.each do |a|
-      li= link_to a.file.identifier, a.file.url 
+      li= link_to a.file.identifier, a.file.url
       //- if current_user&.author_of? @question
         //= link_to 'delete file', attachments_path(a), method: :delete, remote: true
-      
-      
+
   - if current_user&.author_of? @question
     p= link_to 'Edit', '', class: 'edit-question-link', remote: true
     p= link_to "Delete", question_path(@question), method: :delete
@@ -19,10 +18,20 @@
       p= f.text_area :body
       p= f.submit 'Save'
 
-h2 Answers
+h3 Comments
+.question_comments id="comments-of-question_#{@question.id}"
+  - if user_signed_in?
+    .row
+      = render 'comments/comment_form', commentable: @question
+
+  - @question.comments.each do |comment|
+    p= comment.body
+
+h3 Answers
 .answers
+  p.notice
    = render 'answers/answers'
- 
+
 - if user_signed_in?
   .errors
 = render 'answers/form'

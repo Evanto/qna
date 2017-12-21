@@ -3,6 +3,17 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
+  App.cable.subscriptions.create('QuestionsChannel', {
+    connected: ->
+      @perform 'follow'
+      console.log 'Connected!'
+    ,
+
+    received: (data) ->
+      $('.questions').append data
+
+  })
+
   $('.questions').on 'click', '.edit-question-link', (e) ->
     e.preventDefault();
     $(this).hide();
@@ -10,6 +21,4 @@ ready = ->
     $('.answers').hide();
     $('form.update-question-form').show();
 
-$(document).ready(ready);                   # вешаем функцию ready на событие document.ready
 $(document).on('turbolinks:load', ready);   # вешаем функцию ready на событие page:load
-$(document).on('turbolinks:update', ready); # вешаем функцию ready на событие page:update

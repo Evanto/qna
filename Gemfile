@@ -8,7 +8,7 @@ end
 gem 'rails', '~> 5.1.1'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
@@ -20,6 +20,9 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'carrierwave'
 gem 'remotipart', '~> 1.3.0'
 gem "cocoon"
+gem 'skim'
+gem 'gon'
+gem 'therubyracer'
 
 # gem 'jquery-turbolinks'
 

@@ -2,8 +2,10 @@ class Answer < ApplicationRecord
   belongs_to :question
   belongs_to :user
   has_many :attachments, as: :attachable, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 
   include Votable
+  #include Commentable
 
   validates :body, presence: true
 

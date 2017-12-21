@@ -1,0 +1,18 @@
+//alert('Eva just do it!');
+<% if @comment.errors.present? %>
+  <% @comment.errors.full_messages.each do |message| %>
+
+    <% if @comment.commentable.class.name == 'Answer' %>
+      $('.answer-comment-errors').html('<%= j message %>');
+    <% else %>
+      $('.question-comment-errors').html('<%= j message %>');
+    <% end %>
+
+  <% end %>
+<% else %>
+  //alert('#comments-of-<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %>');
+  //console.log('#comments-of-<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %>');
+  //console.log('<%= j render @comment %>');
+  $('#comments-of-<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %>').append('<%= j render @comment %>');
+  $('#comment_body').val('')
+<% end %>

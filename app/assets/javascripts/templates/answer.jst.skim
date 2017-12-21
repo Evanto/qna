@@ -1,0 +1,12 @@
+p class="answer-#{@answer.id}" = @answer.body
+//p class="answer-#{answer.id}" = answer.body
+// автору ответа показывать ссылку сетбест у только что созданного им ответа:
+//- if gon.current_user.id == gon.question.user_id
+  - if gon.current_user_id == @answer.user_id && gon.user_signed_in
+    a.link data-method='patch' data-no-turbolink='true' data-remote='true' href=
+    p= link_to "set best", set_best_answer_path(answer), class: "set-best-link", remote: true, method: :patch, data: { answer_id: answer.id }
+  - elsif answer.best
+    p= link_to "set best", set_best_answer_path(answer), class: " best_link set-best-link", remote: true, method: :patch, data: { answer_id: answer.id }
+
+
+//   show set best link

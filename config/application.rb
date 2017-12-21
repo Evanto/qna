@@ -17,6 +17,8 @@ module Qna
     # ставим rspec, он уже сконфигурирован, но поскольку мы сейчас меняем его параметры,
     # нам приходится указывать снова вручную. Дальше идет список того, что нам нужно и не нужно:
     #config.web_console.whitelisted_ips = '10.0.2.2'
+    config.action_cable.disable_request_forgery_protection = true
+
     config.generators do |g|
       g.test_framework :rspec,
                         fixtures: true, # фикстуры

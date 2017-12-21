@@ -6,6 +6,30 @@
 # который должен выполняться при загрузке страницы
 
 ready = ->
+  if gon.question
+    App.cable.subscriptions.create({
+      channel: 'AnswersChannel',
+      question_id: gon.question.id
+    },{
+      connected: ->
+        @perform 'follow'
+      #  gon.watch
+      #  console.log(gon)
+      ,
+
+      received: (data) ->
+        answer = JSON.parse(data)
+        #console.log(answer)
+
+        gon.watch
+        #console.log(gon.current_user)
+        if !gon.current_user || (answer.user_id != gon.current_user.id)
+          $('.answers').append(JST['templates/answer']({
+            answer: answer
+          }))
+      #  $('.answer').append('<p>' + answer.body + '</p>')
+    })
+
   $('.answers').on 'click', '.edit-answer-link', (e) ->
     e.preventDefault();
     $(this).hide();
@@ -23,6 +47,4 @@ ready = ->
     $('div.answer-' + answer_id).prependTo('div.answers');
     return;
 
-$(document).ready(ready);                   # вешаем функцию ready на событие document.ready
 $(document).on('turbolinks:load', ready);   # вешаем функцию ready на событие page:load
-$(document).on('turbolinks:update', ready); # вешаем функцию ready на событие page:update

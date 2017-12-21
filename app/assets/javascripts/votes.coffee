@@ -37,5 +37,3 @@ votes = ->
         $('div.errors').html('Something is wrong.')
 
 $(document).on('turbolinks:load', votes)
-$(document).on('page:load', votes)
-$(document).on('page:update', votes)
