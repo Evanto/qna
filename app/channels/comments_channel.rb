@@ -3,7 +3,7 @@ class CommentsChannel < ApplicationCable::Channel
     #stop_all_streams
 
     #gon.question_id
-    stream_from "comments_for_question_#{params['question_id']}_and_its_answers"
+    stream_from "comments_for_question_#{params[:question_id]}_and_its_answers"
 
   end
 

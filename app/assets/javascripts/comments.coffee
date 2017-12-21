@@ -1,8 +1,8 @@
 comments_channel = ->
   if gon.question_id
-    App.comments = App.cable.subscriptions.create "CommentsChannel",
+    App.comments = App.cable.subscriptions.create { channel: "CommentsChannel", question_id: gon.question_id },
       connected: ->
-        @perform 'follow', question_id: gon.question_id
+        @perform 'follow'
 
       disconnected: ->
         # Called when the subscription has been terminated by the server
@@ -16,11 +16,7 @@ comments_channel = ->
         #$('.comments_list#comments_' + commentable_class_string).append JST["templates/comment"](comment)
         #commentable_item = answer_32
         #
-  else
-    if (App.comments)
-      App.cable.subscriptions.remove(App.comments)
+
 
 
 $(document).on('turbolinks:load', comments_channel)
-$(document).on('page:load', comments_channel)
-$(document).on('page:update', comments_channel)

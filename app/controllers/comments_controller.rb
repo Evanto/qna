@@ -25,20 +25,19 @@ class CommentsController < ApplicationController
     return if @comment.errors.any?
     ActionCable.server.broadcast(
       "comments_for_question_#{get_question_id}_and_its_answers",
-      ApplicationController.render(partial: 'comments/comment', formats: :json, locals: { comment: @comment })
+      @comment.to_json
+
     )
   end
 
   def get_question_id
-    commentable_name.singularize+"_id"
+    @commentable.try(:question_id) || @commentable.id
   #  @commentable.class == Question
       #gon.question_id
       #@commentable.question_id
   #     @commentable.question_id
-
     #elsif @commentable.class == Answer
     #  @commentable.question_id
-    #  debugger
   #  end
   end
 
