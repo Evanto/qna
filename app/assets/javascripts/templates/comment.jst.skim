@@ -1,2 +1,4 @@
-//li.list-group-item id="comment_#{@id}"
-  //= @body
+li.list-group-item id="comment_#{@id}"
+
+//id="comment_#{@id}"
+  = @body

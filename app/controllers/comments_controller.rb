@@ -2,6 +2,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_commentable, only: [:create]
+  after_action :publish_comment, only: :create
 
   def create
     @comment = @commentable.comments.build(comment_params)
@@ -29,14 +30,16 @@ class CommentsController < ApplicationController
   end
 
   def get_question_id
-    if @commentable.class == Question
-      gon.question_id
-      @commentable.question_id
-      @commentable.id
+    commentable_name.singularize+"_id"
+  #  @commentable.class == Question
+      #gon.question_id
+      #@commentable.question_id
+  #     @commentable.question_id
 
-    elsif @commentable.class == Answer
-      @commentable.question_id
-    end
+    #elsif @commentable.class == Answer
+    #  @commentable.question_id
+    #  debugger
+  #  end
   end
 
 end
