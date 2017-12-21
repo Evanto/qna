@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  #delete 'attachments/:id' => 'attachment#destroy'
+
+  resources :votes, only: [:create] do
+    delete :reset, on: :collection
+  end
+
   resources :attachments, only: :destroy
   devise_for :users
 
