@@ -23,6 +23,7 @@ gem "cocoon"
 gem 'skim'
 gem 'gon'
 gem 'therubyracer'
+gem 'responders'
 
 # gem 'jquery-turbolinks'
 

@@ -4,10 +4,14 @@ class AnswersController < ApplicationController
   before_action :load_answer, only: [:edit, :update, :destroy, :set_best]
   after_action :publish_answer, only: [:create]
 
+  respond_to :js
+  respond_to :json, only: [:set_best]
+
   def update
     if current_user&.author_of? @answer
     @answer.update(answer_params)
     @question = @answer.question
+    respond_with(@answer)
     end
   end
 
@@ -20,15 +24,14 @@ class AnswersController < ApplicationController
   def destroy
     @question = @answer.question
     if current_user.author_of? @answer
-      @answer.destroy!
+      respond_with(@answer.destroy!)
     end
   end
 
   def set_best
     question = @answer.question
     if current_user.author_of? question
-      @answer.set_best
-      render json: { message: "You've set the best answer" }
+      respond_with(@answer.set_best)
     end
   end
 
@@ -51,7 +54,6 @@ class AnswersController < ApplicationController
     ActionCable.server.broadcast(
       "question_answers_#{@answer.question_id}",
       @answer.to_json
-       #ApplicationController.render(partial: 'answers/answer', formats: :json, locals: { answer: @answer })
     )
   end
 
